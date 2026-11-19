@@ -30,9 +30,16 @@ python main.py todo                 # TODO el flujo
 
 Todo corre sin internet: los datos ya vienen en `data/`. Solo el mapa carga Leaflet y las teselas de OpenStreetMap desde la red. Tarda unos 2 minutos.
 
-Comandos sueltos: `python main.py cargar | probabilidades | attr | exportar | mapa`.
-Opciones: `--muestras N` (escenarios Monte Carlo, 5.000 por defecto), `--no-abrir`, `--fuente internet_archive` (capa antigua, solo para comparar)
-y `--desde-main-sql` (carga la base desde `sql/main.sql` en vez de construirla desde los datos).
+Comandos sueltos: `python main.py cargar | probabilidades | attr | exportar | mapa | verificar`.
+Opciones:
+
+- `--muestras N`: escenarios Monte Carlo (5.000 por defecto).
+- `--no-abrir`: no abre el navegador.
+- `--fuente internet_archive`: usa la capa antigua, solo para comparar.
+- `--desde-main-sql`: carga la base desde `sql/main.sql` en vez de construirla desde los datos.
+- `--motor pgrouting`: calcula las componentes de cada escenario con `pgr_connectedComponents` dentro de la base. Da el mismo resultado que SciPy y tarda unos 9 minutos en vez de 30 segundos.
+
+`python main.py verificar` resuelve la red en operación y los primeros 20 escenarios del sismo con SciPy y con `pgr_connectedComponents`, y comprueba que dan lo mismo.
 
 ### Valores que debe entregar
 
@@ -80,7 +87,7 @@ docker exec tarea2_resiliencia_db psql -U tarea2 -d vacia -v ON_ERROR_STOP=1 -q 
 | pgRouting | 3.7.3 | `pgr_nodeNetwork` (corta las líneas en sus cruces), `pgr_createTopology` (crea `source`, `target` y la tabla de vértices), `pgr_analyzeGraph` (revisa la red) y `pgr_connectedComponents` (cuenta las componentes). Se usa la 3.7 porque `pgr_createTopology` queda obsoleta en la 3.8. |
 | psycopg2-binary | 2.9.13 | Conecta Python con PostgreSQL. |
 | numpy | 2.1.3 | Arreglos: sorteo de los escenarios Monte Carlo y la cadena del modelo en Python (comprobación del SQL y sensibilidades). |
-| SciPy | 1.15.3 | `scipy.sparse.csgraph.connected_components`: componentes conexas en cada uno de los 5.000 escenarios Monte Carlo (es mucho más rápido que llamar a la base 5.000 veces). En operación, la misma cuenta se hace con `pgr_connectedComponents` en la base. |
+| SciPy | 1.15.3 | `scipy.sparse.csgraph.connected_components`: componentes conexas en cada uno de los 5.000 escenarios Monte Carlo (~5 ms por escenario, frente a ~100 ms de `pgr_connectedComponents`). `python main.py verificar` muestra que da lo mismo que pgRouting, y `--motor pgrouting` hace todo el Monte Carlo dentro de la base. |
 | Leaflet | 1.9.4 (CDN cdnjs) | Mapa web interactivo (`salida/mapa.html`). |
 | Docker / Docker Compose | 28.0 / 2.34 | Levanta la base con la imagen `pgrouting/pgrouting:16-3.5-3.7.3`. |
 
@@ -103,6 +110,8 @@ proponer una red nueva (sección 6). **No se agregó ningún enlace sintético**
 
 **ATTR.** Average Two-Terminal Reliability: fracción esperada de pares de nodos clave que pueden comunicarse. Es la definición del paper base del curso: Boettcher, Prieto, Restrepo y Pezoa (2018), IEEE Latin America Transactions 16(9), ec. 8 y 9, «fiabilidad promedio de dos terminales»: ATTR(k) = C(n,2)⁻¹ Σ Z_ij, promediado sobre los escenarios de falla. En operación, cada par está conectado o no. Después del sismo, cada arista falla de forma independiente con su probabilidad `p_falla`. El valor
 es el promedio de 5.000 escenarios (Monte Carlo, semilla fija).
+
+El paper suma sobre todos sus escenarios porque tiene pocos. Aquí hay 2^22.585 escenarios, y el cálculo exacto de la fiabilidad de una red es #P-completo (Provan y Ball, 1983). Con 5.000 escenarios, el IC 95 % del ATTR es ±0,00003 (0,6 %). La tabla `attr_nodo` guarda, para cada nodo clave, la fracción de los otros nodos clave que alcanza antes y después del sismo; su promedio es el ATTR.
 
 **Modelo de falla (desde el epicentro del GeoJSON del USGS), en `sql/05_probabilidades.sql`.**
 1. Cada arista se divide en sub-tramos de 2 km como máximo. La distancia al epicentro del punto medio de cada sub-tramo se calcula con `ST_Distance` sobre `geography` (geodésica en el elipsoide WGS84, en metros).
@@ -141,4 +150,5 @@ salida/              mapa.html, attr_operacion.json, attr_post_sismo.json
 - Newmark y Hall (1982) vía USGS ShakeLib: https://usgs.github.io/shakelib/shakelib.conversions.imt.newmark_hall_1982.html
 - ALA (2001), *Seismic Fragility Formulations for Water Systems* (fórmula de RR citada en Mazumder et al., J. Pipeline Syst. Eng.).
 - PostGIS, `ST_Distance` sobre `geography` (distancia en metros sobre el elipsoide): https://postgis.net/docs/ST_Distance.html
+- J. S. Provan y M. O. Ball (1983), «The complexity of counting cuts and of computing the probability that a graph is connected», SIAM J. Comput. 12(4):777-788, doi 10.1137/0212053.
 - PeeringDB (https://www.peeringdb.com), submarinecablemap.com, SENAPRED/ArcGIS Online (DPA 2023).

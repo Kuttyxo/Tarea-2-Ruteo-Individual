@@ -8,7 +8,9 @@ Comandos sueltos:
     python main.py attr            # ATTR antes y despues del terremoto (imprime y guarda salida/attr_*.json)
     python main.py exportar        # escribe sql/main.sql (volcado completo de la base)
     python main.py mapa            # genera salida/mapa.html (Leaflet) y lo abre en el navegador
+    python main.py verificar       # comprueba que SciPy da lo mismo que pgr_connectedComponents (operacion + 20 escenarios)
 Opciones: --muestras N (escenarios Monte Carlo, por defecto 5000)   --no-abrir (no abrir el navegador)
+         --motor scipy|pgrouting (componentes conexas en Python o con pgr_connectedComponents en la base; mismo resultado)
          --fuente transparencia|internet_archive (fibra; por defecto el shapefile oficial de Transparencia)
          --desde-main-sql (en vez de construir la base desde los datos, la carga desde sql/main.sql)
 """
@@ -29,7 +31,8 @@ if hasattr(sys.stdout, "reconfigure"):
 import psycopg2
 
 from src import falla as F
-from src.attr import calcular_attr, guardar_por_nodo, guardar_resultado, resumen_operacion, resumen_sismo
+from src.attr import (calcular_attr, guardar_por_nodo, guardar_resultado, resumen_operacion, resumen_sismo,
+                      verificar_pgrouting)
 from src.cargar_infra import FUENTE_POR_DEFECTO, FUENTES, cargar_fibra
 from src.db import PARAMS, SALIDA_DIR, SQL_DIR, conectar, consultar, ejecutar_archivo_sql
 from src.exportar import generar_main_sql
@@ -124,10 +127,10 @@ def paso_probabilidades(con, numero="5"):
     _imprimir_probabilidades(con)
 
 
-def paso_attr(con, muestras):
-    print(f"== 6. ATTR antes y despues del terremoto ({muestras:,} escenarios Monte Carlo)")
-    antes = calcular_attr(con)
-    despues = calcular_attr(con, p_falla=F.p_falla_dict(con), n_muestras=muestras)
+def paso_attr(con, muestras, motor="scipy"):
+    print(f"== 6. ATTR antes y despues del terremoto ({muestras:,} escenarios Monte Carlo; componentes conexas con {motor})")
+    antes = calcular_attr(con, motor=motor)
+    despues = calcular_attr(con, p_falla=F.p_falla_dict(con), n_muestras=muestras, motor=motor)
     guardar_resultado(con, "operacion", antes)
     guardar_resultado(con, "post_sismo", despues)
     guardar_por_nodo(con, antes, despues)
@@ -162,6 +165,23 @@ def _imprimir_nodos(con):
         print(f"     {nom[:30]:<30} {rol:<11} {com or '':<14} {(reg or '')[:22]:<22} R {ra:.4f} -> {rd:.4f} ({100 * (rd / ra - 1):+.0f} %)")
 
 
+def paso_verificar(con, n):
+    print(f"== Verificacion: SciPy (usado en el Monte Carlo) frente a pgr_connectedComponents (dentro de la base), "
+          f"red en operacion y primeros {n} escenarios del sismo (semilla 2010)")
+    filas = verificar_pgrouting(con, F.p_falla_dict(con), n_escenarios=n)
+    print(f"   {'escenario':<10} {'aristas caidas':>14} {'componentes SciPy':>18} {'pgRouting':>10} {'grupos de nodos clave':>22} "
+          f"{'ATTR SciPy':>11} {'ATTR pgRouting':>15}")
+    for f in filas:
+        print(f"   {f['escenario']:<10} {f['aristas_caidas']:>14} {f['componentes_scipy']:>18} {f['componentes_pgr']:>10} "
+              f"{'iguales' if f['particion_igual'] else 'DISTINTOS':>22} {f['attr_scipy']:>11.6f} {f['attr_pgr']:>15.6f}")
+    iguales = sum(f["particion_igual"] and f["componentes_scipy"] == f["componentes_pgr"] for f in filas)
+    sc = sum(f["seg_scipy"] for f in filas) / len(filas)
+    pg = sum(f["seg_pgr"] for f in filas) / len(filas)
+    print(f"   escenarios identicos: {iguales} de {len(filas)}")
+    print(f"   tiempo medio por escenario: SciPy {1000 * sc:.0f} ms, pgr_connectedComponents {1000 * pg:.0f} ms "
+          f"(5.000 escenarios: SciPy ~{5000 * sc / 60:.1f} min, pgRouting ~{5000 * pg / 60:.0f} min)")
+
+
 def paso_exportar(con):
     print("== 7. main.sql: volcado completo de la base (infraestructura + topologia + nodos + sismo + probabilidades + ATTR)")
     ruta, conteo = generar_main_sql(con, os.path.join(SQL_DIR, "main.sql"))
@@ -188,12 +208,15 @@ def paso_mapa(con, muestras, abrir):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("comando", choices=["cargar", "probabilidades", "attr", "exportar", "mapa", "todo"])
+    ap.add_argument("comando", choices=["cargar", "probabilidades", "attr", "exportar", "mapa", "verificar", "todo"])
     ap.add_argument("--muestras", type=int, default=5000)
+    ap.add_argument("--escenarios-pgr", type=int, default=20, help="escenarios a comparar en 'verificar' (por defecto 20)")
     ap.add_argument("--fuente", choices=sorted(FUENTES), default=FUENTE_POR_DEFECTO,
                     help="fibra: shapefile oficial de Transparencia (por defecto) o la copia del Internet Archive")
     ap.add_argument("--desde-main-sql", action="store_true", help="cargar la base desde sql/main.sql en vez de construirla")
     ap.add_argument("--no-abrir", action="store_true")
+    ap.add_argument("--motor", choices=["scipy", "pgrouting"], default="scipy",
+                    help="componentes conexas del Monte Carlo: SciPy (rapido) o pgr_connectedComponents en la base (~8 min)")
     a = ap.parse_args()
     inicio = time.time()
     con = asegurar_bd()
@@ -205,11 +228,13 @@ def main():
     if a.comando == "probabilidades":
         paso_probabilidades(con)
     if a.comando in ("attr", "todo"):
-        paso_attr(con, a.muestras)
+        paso_attr(con, a.muestras, a.motor)
     if a.comando == "exportar" or (a.comando == "todo" and not a.desde_main_sql):
         paso_exportar(con)
     if a.comando in ("mapa", "todo"):
         paso_mapa(con, a.muestras, not a.no_abrir)
+    if a.comando == "verificar":
+        paso_verificar(con, a.escenarios_pgr)
     print(f"listo en {time.time() - inicio:.0f} s")
 
 

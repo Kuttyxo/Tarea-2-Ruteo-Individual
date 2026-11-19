@@ -62,12 +62,51 @@ def _denominadores(roles):
     return d
 
 
-def _una_muestra(src, dst, vivas, n_vertices, vertice, roles):
+def _componentes_scipy(src, dst, vivas, n_vertices):
+    """Componentes conexas con SciPy. Los ids de vertice de pgRouting parten en 1: la fila 0 de la matriz es un vertice
+    que no existe y se descuenta del total."""
     g = coo_matrix((np.ones(int(vivas.sum()), dtype=np.int8), (src[vivas], dst[vivas])), shape=(n_vertices, n_vertices))
     n_comp, labels = connected_components(g, directed=False)
+    return n_comp - 1, labels
+
+
+def escenarios(p, n_muestras, semilla):
+    """Escenarios de falla del Monte Carlo: en cada uno, la arista i sigue viva con probabilidad 1 - p_i (independientes)."""
+    rng = np.random.default_rng(semilla)
+    for _ in range(n_muestras):
+        yield rng.random(len(p)) >= p
+
+
+class MotorPgr:
+    """Componentes conexas con pgr_connectedComponents dentro de la base (alternativa a SciPy, mas lenta: ~0,1 s por escenario).
+    Devuelve lo mismo que _componentes_scipy: (numero de componentes, etiqueta de cada vertice)."""
+
+    def __init__(self, con, ids, n_vertices):
+        from psycopg2.extras import execute_values
+        self.cur, self.ids, self.n_vertices, self._ev = con.cursor(), ids, n_vertices, execute_values
+        self.cur.execute("DROP TABLE IF EXISTS pg_temp.aristas_caidas")
+        self.cur.execute("CREATE TEMP TABLE aristas_caidas (id integer PRIMARY KEY)")
+
+    def __call__(self, vivas):
+        self.cur.execute("TRUNCATE aristas_caidas")
+        if (~vivas).any():
+            self._ev(self.cur, "INSERT INTO aristas_caidas (id) VALUES %s", [(int(i),) for i in self.ids[~vivas]], page_size=1000)
+        self.cur.execute("""SELECT node, component FROM pgr_connectedComponents(
+                              'SELECT id, source, target, 1 AS cost, 1 AS reverse_cost FROM fibra_red e
+                               WHERE NOT bucle AND NOT EXISTS (SELECT 1 FROM aristas_caidas c WHERE c.id = e.id)')""")
+        filas = np.array(self.cur.fetchall(), dtype=np.int64).reshape(-1, 2)
+        etiqueta = np.arange(self.n_vertices) + self.n_vertices      # vertice sin aristas vivas: queda solo
+        etiqueta[filas[:, 0]] = filas[:, 1]
+        unicas, etiqueta = np.unique(etiqueta, return_inverse=True)
+        return len(unicas) - 1, etiqueta                              # -1: el vertice 0 no existe
+
+
+def _una_muestra(src, dst, vivas, n_vertices, vertice, roles, motor=None):
+    n_comp, labels = _componentes_scipy(src, dst, vivas, n_vertices) if motor is None else motor(vivas)
     unidos = vertice >= 0
-    lab = np.where(unidos, labels[np.where(unidos, vertice, 0)], n_comp + np.arange(len(vertice)))
-    pares, total = _pares(lab, roles, n_comp + len(vertice))
+    libre = int(labels.max()) + 1                 # etiquetas nuevas para los nodos sin fibra (cada uno solo)
+    lab = np.where(unidos, labels[np.where(unidos, vertice, 0)], libre + np.arange(len(vertice)))
+    pares, total = _pares(lab, roles, libre + len(vertice))
     mayor = int(total.max())
     unidos_en_mayor = int(np.bincount(labels[vertice[unidos]]).max()) if unidos.any() else 0
     todos = bool(unidos.all() and len(np.unique(labels[vertice[unidos]])) == 1)
@@ -77,13 +116,15 @@ def _una_muestra(src, dst, vivas, n_vertices, vertice, roles):
     return pares, mayor, unidos_en_mayor, todos, todos_unidos, int(n_comp), solos, socios
 
 
-def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=None):
+def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=None, devolver_muestras=False, motor="scipy"):
     """ATTR con la red en operacion (p_falla=None) o con probabilidades de falla por arista.
 
     p_falla: dict {id de fibra_red: probabilidad}. Aristas que no estan en el dict tienen p = 0.
-    Devuelve un dict con las metricas.
+    motor: 'scipy' (por defecto, rapido) o 'pgrouting' (pgr_connectedComponents dentro de la base, mismos resultados).
+    Devuelve un dict con las metricas (con devolver_muestras=True, tambien el ATTR de cada escenario).
     """
     ids, src, dst, n_vertices = cargar_red(con)
+    fn = MotorPgr(con, ids, n_vertices) if motor == "pgrouting" else None
     nodo_ids, roles, vertice = cargar_nodos(con, umbral_m)
     den = _denominadores(roles)
     unidos = vertice >= 0
@@ -92,19 +133,17 @@ def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=Non
     if p_falla is None:
         muestras = 1
         pares, mayor, unidos_mayor, todos, todos_unidos, n_comp, solos, socios = _una_muestra(
-            src, dst, np.ones(len(ids), dtype=bool), n_vertices, vertice, roles)
+            src, dst, np.ones(len(ids), dtype=bool), n_vertices, vertice, roles, fn)
         acum = {k: [v] for k, v in pares.items()}
         mayores, todos_l, todos_u_l, ncomp_l, solos_l = [mayor], [todos], [todos_unidos], [n_comp], [solos]
         socios_sum = socios.astype(float)
     else:
         p = np.array([p_falla.get(int(i), 0.0) for i in ids])
-        rng = np.random.default_rng(semilla)
         acum = {k: [] for k in den}
         mayores, todos_l, todos_u_l, ncomp_l, solos_l = [], [], [], [], []
         socios_sum = np.zeros(len(roles))
-        for _ in range(n_muestras):
-            vivas = rng.random(len(ids)) >= p
-            pares, mayor, _, todos, todos_unidos, n_comp, solos, socios = _una_muestra(src, dst, vivas, n_vertices, vertice, roles)
+        for vivas in escenarios(p, n_muestras, semilla):
+            pares, mayor, _, todos, todos_unidos, n_comp, solos, socios = _una_muestra(src, dst, vivas, n_vertices, vertice, roles, fn)
             for k, v in pares.items():
                 acum[k].append(v)
             mayores.append(mayor); todos_l.append(todos); todos_u_l.append(todos_unidos); ncomp_l.append(n_comp); solos_l.append(solos)
@@ -128,6 +167,11 @@ def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=Non
     if muestras > 1:
         res["nodos_clave_solos_ic95"] = float(1.96 * np.std(solos_l, ddof=1) / np.sqrt(muestras))
     res["pares_totales"] = den["total"]
+    if devolver_muestras:
+        res["muestras_attr_total"] = [v / den["total"] for v in acum["total"]]
+    if fn is not None:
+        con.rollback()                            # borra la tabla temporal de aristas caidas
+    res["motor_componentes"] = motor
     # Por nodo: fiabilidad promedio del nodo R_i = E[otros nodos clave que alcanza] / (N - 1).
     # El promedio de R_i sobre los N nodos es exactamente el ATTR (cada par se cuenta dos veces).
     # Va aparte (clave "por_nodo") porque no es un numero suelto: main.py la guarda en la tabla attr_nodo.
@@ -175,6 +219,62 @@ def resumen_sismo(con, n=10):
                                  FROM nodos_clave n JOIN attr_nodo a ON a.nodo_id = n.id
                                  GROUP BY n.region ORDER BY avg(a.r_antes) - avg(a.r_despues) DESC""")
     return {"nodos": nodos, "regiones": regiones}
+
+
+def _canonica(etiquetas):
+    """Renumera las etiquetas por orden de aparicion: dos particiones son iguales si sus formas canonicas son iguales."""
+    vistas = {}
+    return np.array([vistas.setdefault(e, len(vistas)) for e in etiquetas])
+
+
+def verificar_pgrouting(con, p_falla, n_escenarios=20, semilla=2010):
+    """Compara SciPy con pgr_connectedComponents (dentro de la base) en la red en operacion y en los primeros n escenarios
+    del Monte Carlo (los mismos que usa calcular_attr con esa semilla). Para cada escenario compara: (a) el numero de
+    componentes de la red y (b) que grupos de nodos clave quedan conectados (la particion). Si (b) coincide, el ATTR de ese
+    escenario es identico con los dos metodos. Devuelve una fila por escenario."""
+    import time
+    from psycopg2.extras import execute_values
+    ids, src, dst, n_vertices = cargar_red(con)
+    _, roles, vertice = cargar_nodos(con)
+    assert consultar(con, "SELECT count(*) = max(id) FROM fibra_red_vertices_pgr")[0][0], "ids de vertices no consecutivos"
+    unidos = vertice >= 0
+    den = len(roles) * (len(roles) - 1) // 2
+    p = np.array([p_falla.get(int(i), 0.0) for i in ids])
+    with con.cursor() as cur:
+        cur.execute("DROP TABLE IF EXISTS pg_temp.aristas_caidas")
+        cur.execute("CREATE TEMP TABLE aristas_caidas (id integer PRIMARY KEY)")
+    filas = []
+    lista = [("operacion", np.ones(len(ids), dtype=bool))] + [(f"sismo {k + 1}", v) for k, v in enumerate(escenarios(p, n_escenarios, semilla))]
+    for nombre, vivas in lista:
+        # SciPy (lo que usa el Monte Carlo)
+        t0 = time.perf_counter()
+        n_sc, lab_v = _componentes_scipy(src, dst, vivas, n_vertices)
+        en_aristas = np.unique(np.concatenate([src[vivas], dst[vivas]]))
+        n_sc_aristas = len(np.unique(lab_v[en_aristas]))            # componentes entre los vertices que tienen aristas vivas
+        lab_sc = np.where(unidos, lab_v[np.where(unidos, vertice, 0)], -1 - np.arange(len(vertice)))
+        t_sc = time.perf_counter() - t0
+        # pgRouting dentro de la base, con las mismas aristas caidas
+        t0 = time.perf_counter()
+        with con.cursor() as cur:
+            cur.execute("TRUNCATE aristas_caidas")
+            if (~vivas).any():
+                execute_values(cur, "INSERT INTO aristas_caidas (id) VALUES %s", [(int(i),) for i in ids[~vivas]])
+            cur.execute("""SELECT node, component FROM pgr_connectedComponents(
+                             'SELECT id, source, target, 1 AS cost, 1 AS reverse_cost FROM fibra_red e
+                              WHERE NOT bucle AND NOT EXISTS (SELECT 1 FROM aristas_caidas c WHERE c.id = e.id)')""")
+            comp = dict(cur.fetchall())
+        t_pg = time.perf_counter() - t0
+        n_pg = len(set(comp.values()))
+        # un vertice sin aristas vivas no aparece en pgRouting: queda solo (su propio grupo)
+        lab_pg = np.array([comp.get(int(v), -int(v) - 10**7) if u else -1 - k for k, (v, u) in enumerate(zip(vertice, unidos))])
+        misma = bool(np.array_equal(_canonica(lab_sc), _canonica(lab_pg)))
+        pares_sc = int(sum(c * (c - 1) // 2 for c in np.unique(lab_sc, return_counts=True)[1]))
+        pares_pg = int(sum(c * (c - 1) // 2 for c in np.unique(lab_pg, return_counts=True)[1]))
+        filas.append({"escenario": nombre, "aristas_caidas": int((~vivas).sum()), "componentes_scipy": n_sc_aristas,
+                      "componentes_pgr": n_pg, "particion_igual": misma, "attr_scipy": pares_sc / den, "attr_pgr": pares_pg / den,
+                      "seg_scipy": t_sc, "seg_pgr": t_pg})
+    con.rollback()
+    return filas
 
 
 def guardar_por_nodo(con, antes, despues):

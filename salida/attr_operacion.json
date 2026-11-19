@@ -14,7 +14,8 @@
   "ATTR_solo_nodos_unidos": 0.05281806915571381,
   "mayor_grupo_de_nodos_clave_conectados": 54.0,
   "prob_todos_los_nodos_unidos_conectados": 0.0,
-  "componentes_de_la_red_promedio": 124.0,
+  "componentes_de_la_red_promedio": 123.0,
   "nodos_clave_solos_en_su_componente": 115.0,
-  "pares_totales": 79401
+  "pares_totales": 79401,
+  "motor_componentes": "scipy"
 }

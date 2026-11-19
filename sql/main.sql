@@ -1,5 +1,5 @@
 -- main.sql: base de datos completa de la Tarea 2 individual (Ruteo Resiliente en Redes).
--- Generado por main.py el 2026-11-19 20:30 en PostgreSQL 16.9 (Debian 16.9-1.pgdg110+1) + PostGIS 3.5.2 + pgRouting 3.7.3.
+-- Generado por main.py el 2026-11-19 20:48 en PostgreSQL 16.9 (Debian 16.9-1.pgdg110+1) + PostGIS 3.5.2 + pgRouting 3.7.3.
 --
 -- Contiene: infraestructura (fibra_raw), topologia (fibra_red con source/target/p_falla y fibra_red_vertices_pgr),
 -- nodos clave (nodos_clave, nodo_red), sismo (sismo), modelo y probabilidades de falla (youngs1997_coef,
@@ -48325,7 +48325,7 @@ INSERT INTO attr_resultado (escenario, metrica, valor) VALUES
 ('operacion','ATTR_recibe-recibe','0.03422649140546006'),
 ('operacion','ATTR_solo_nodos_unidos','0.05281806915571381'),
 ('operacion','ATTR_total','0.038110351255021976'),
-('operacion','componentes_de_la_red_promedio','124'),
+('operacion','componentes_de_la_red_promedio','123'),
 ('operacion','mayor_grupo_de_nodos_clave_conectados','54'),
 ('operacion','muestras','1'),
 ('operacion','n_aristas','22585'),
@@ -48350,7 +48350,7 @@ INSERT INTO attr_resultado (escenario, metrica, valor) VALUES
 ('post_sismo','ATTR_solo_nodos_unidos','0.007939187656001814'),
 ('post_sismo','ATTR_total','0.005728441707283284'),
 ('post_sismo','ATTR_total_ic95','3.17208402563277e-05'),
-('post_sismo','componentes_de_la_red_promedio','365.6758'),
+('post_sismo','componentes_de_la_red_promedio','364.6758'),
 ('post_sismo','mayor_grupo_de_nodos_clave_conectados','17.8808'),
 ('post_sismo','muestras','5000'),
 ('post_sismo','n_aristas','22585'),
