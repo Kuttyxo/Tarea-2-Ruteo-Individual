@@ -106,6 +106,7 @@ def generar_main_sql(con, ruta=None):
 
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SET client_min_messages = warning;
 CREATE EXTENSION IF NOT EXISTS postgis;
 CREATE EXTENSION IF NOT EXISTS pgrouting;
 

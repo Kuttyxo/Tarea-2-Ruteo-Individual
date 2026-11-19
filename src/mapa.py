@@ -121,6 +121,6 @@ def generar_mapa(con, attr_antes, attr_despues, ruta=None):
                           f"{attr_antes['n_nodos_unidos_a_la_red']} de {attr_antes['n_nodos_clave']} nodos clave tienen fibra detectada.")
     ruta = ruta or os.path.join(SALIDA_DIR, "mapa.html")
     os.makedirs(os.path.dirname(ruta), exist_ok=True)
-    with open(ruta, "w", encoding="utf-8") as f:
+    with open(ruta, "w", encoding="utf-8", newline="\n") as f:
         f.write(HTML.replace("__DATA__", json.dumps(datos, ensure_ascii=False, separators=(",", ":"))))
     return ruta
