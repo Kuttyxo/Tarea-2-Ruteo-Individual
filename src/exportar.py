@@ -27,6 +27,7 @@ TABLAS = [
     ("nodos_clave", "id", "Nodos clave: generan (centros de datos), intercambian (IXP, amarres de cables), reciben (comunas)"),
     ("nodo_red", "nodo_id", "Union de cada nodo clave con un vertice de la topologia"),
     ("attr_resultado", "escenario, metrica", "ATTR en operacion y despues del sismo (salida de main.py)"),
+    ("attr_nodo", "nodo_id", "Fiabilidad promedio de cada nodo clave antes y despues del sismo (promedio = ATTR)"),
 ]
 VISTAS = ["falla_tramo"]
 FUNCIONES = ["youngs1997"]

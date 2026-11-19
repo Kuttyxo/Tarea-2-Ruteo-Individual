@@ -73,7 +73,8 @@ def _una_muestra(src, dst, vivas, n_vertices, vertice, roles):
     todos = bool(unidos.all() and len(np.unique(labels[vertice[unidos]])) == 1)
     todos_unidos = bool(len(np.unique(labels[vertice[unidos]])) == 1) if unidos.any() else False
     solos = int((total[lab] == 1).sum())          # nodos clave sin ningun otro nodo clave en su componente
-    return pares, mayor, unidos_en_mayor, todos, todos_unidos, int(n_comp), solos
+    socios = total[lab] - 1                       # por nodo: cuantos otros nodos clave alcanza
+    return pares, mayor, unidos_en_mayor, todos, todos_unidos, int(n_comp), solos, socios
 
 
 def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=None):
@@ -83,28 +84,31 @@ def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=Non
     Devuelve un dict con las metricas.
     """
     ids, src, dst, n_vertices = cargar_red(con)
-    _, roles, vertice = cargar_nodos(con, umbral_m)
+    nodo_ids, roles, vertice = cargar_nodos(con, umbral_m)
     den = _denominadores(roles)
     unidos = vertice >= 0
     n_unidos = int(unidos.sum())
 
     if p_falla is None:
         muestras = 1
-        pares, mayor, unidos_mayor, todos, todos_unidos, n_comp, solos = _una_muestra(
+        pares, mayor, unidos_mayor, todos, todos_unidos, n_comp, solos, socios = _una_muestra(
             src, dst, np.ones(len(ids), dtype=bool), n_vertices, vertice, roles)
         acum = {k: [v] for k, v in pares.items()}
         mayores, todos_l, todos_u_l, ncomp_l, solos_l = [mayor], [todos], [todos_unidos], [n_comp], [solos]
+        socios_sum = socios.astype(float)
     else:
         p = np.array([p_falla.get(int(i), 0.0) for i in ids])
         rng = np.random.default_rng(semilla)
         acum = {k: [] for k in den}
         mayores, todos_l, todos_u_l, ncomp_l, solos_l = [], [], [], [], []
+        socios_sum = np.zeros(len(roles))
         for _ in range(n_muestras):
             vivas = rng.random(len(ids)) >= p
-            pares, mayor, _, todos, todos_unidos, n_comp, solos = _una_muestra(src, dst, vivas, n_vertices, vertice, roles)
+            pares, mayor, _, todos, todos_unidos, n_comp, solos, socios = _una_muestra(src, dst, vivas, n_vertices, vertice, roles)
             for k, v in pares.items():
                 acum[k].append(v)
             mayores.append(mayor); todos_l.append(todos); todos_u_l.append(todos_unidos); ncomp_l.append(n_comp); solos_l.append(solos)
+            socios_sum += socios
         muestras = n_muestras
 
     res = {"muestras": muestras, "n_nodos_clave": int(len(roles)), "n_nodos_unidos_a_la_red": n_unidos,
@@ -124,7 +128,74 @@ def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=Non
     if muestras > 1:
         res["nodos_clave_solos_ic95"] = float(1.96 * np.std(solos_l, ddof=1) / np.sqrt(muestras))
     res["pares_totales"] = den["total"]
+    # Por nodo: fiabilidad promedio del nodo R_i = E[otros nodos clave que alcanza] / (N - 1).
+    # El promedio de R_i sobre los N nodos es exactamente el ATTR (cada par se cuenta dos veces).
+    # Va aparte (clave "por_nodo") porque no es un numero suelto: main.py la guarda en la tabla attr_nodo.
+    socios_medios = socios_sum / muestras
+    res["por_nodo"] = {"nodo_id": [int(i) for i in nodo_ids], "unido": [bool(u) for u in unidos],
+                       "socios": [float(s) for s in socios_medios],
+                       "r_nodo": [float(s) / (len(roles) - 1) for s in socios_medios]}
     return res
+
+
+SQL_GRUPOS = """
+    WITH comp AS (SELECT node, component FROM pgr_connectedComponents(
+                    'SELECT id, source, target, largo_m AS cost, largo_m AS reverse_cost FROM fibra_red WHERE NOT bucle')),
+         g AS (SELECT n.id, n.rol, n.region, c.component
+               FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id AND r.conectado JOIN comp c ON c.node = r.vertice_id)
+    SELECT component, count(*) AS nodos, count(*) FILTER (WHERE rol = 'genera') AS genera,
+           count(*) FILTER (WHERE rol = 'intercambia') AS intercambia, count(*) FILTER (WHERE rol = 'recibe') AS recibe,
+           string_agg(DISTINCT region, ', ') AS regiones
+    FROM g GROUP BY component ORDER BY nodos DESC, component"""
+
+
+def resumen_operacion(con):
+    """Para interpretar el ATTR en operacion: nodos clave sin fibra y grupos de nodos clave que comparten un fragmento de la
+    red (componentes conexas calculadas con pgr_connectedComponents dentro de la base)."""
+    por_rol = consultar(con, """SELECT n.rol, n.tipo, count(*), count(*) FILTER (WHERE NOT a.unido),
+                                       count(*) FILTER (WHERE a.unido AND a.socios_antes = 0)
+                                FROM nodos_clave n JOIN attr_nodo a ON a.nodo_id = n.id GROUP BY 1, 2 ORDER BY 1, 2""")
+    sin_fibra = consultar(con, """SELECT n.rol, n.nombre, n.comuna, n.region, round((r.dist_m / 1000)::numeric, 1)
+                                  FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id
+                                  WHERE NOT r.conectado AND n.rol <> 'recibe' ORDER BY n.rol, n.nombre""")
+    comunas_sin_fibra = consultar(con, """SELECT n.region, count(*) FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id
+                                          WHERE NOT r.conectado AND n.rol = 'recibe' GROUP BY 1 ORDER BY 2 DESC, 1""")
+    grupos = consultar(con, SQL_GRUPOS)
+    return {"por_rol": por_rol, "sin_fibra": sin_fibra, "comunas_sin_fibra": comunas_sin_fibra, "grupos": grupos}
+
+
+def resumen_sismo(con, n=10):
+    """Nodos clave mas afectados (mayor caida de su fiabilidad promedio R_i) y resumen por region."""
+    nodos = consultar(con, """SELECT n.nombre, n.rol, n.comuna, n.region, a.socios_antes, round(a.socios_despues::numeric, 1),
+                                     a.r_antes, a.r_despues, a.caida
+                              FROM nodos_clave n JOIN attr_nodo a ON a.nodo_id = n.id
+                              ORDER BY a.caida DESC, n.nombre LIMIT %s""", (n,))
+    regiones = consultar(con, """SELECT n.region, count(*) AS nodos, count(*) FILTER (WHERE a.unido) AS unidos,
+                                        avg(a.r_antes) AS r_antes, avg(a.r_despues) AS r_despues
+                                 FROM nodos_clave n JOIN attr_nodo a ON a.nodo_id = n.id
+                                 GROUP BY n.region ORDER BY avg(a.r_antes) - avg(a.r_despues) DESC""")
+    return {"nodos": nodos, "regiones": regiones}
+
+
+def guardar_por_nodo(con, antes, despues):
+    """Tabla attr_nodo: fiabilidad promedio de cada nodo clave antes y despues del sismo (y su caida)."""
+    a, d = antes["por_nodo"], despues["por_nodo"]
+    assert a["nodo_id"] == d["nodo_id"]
+    with con.cursor() as cur:
+        cur.execute("DROP TABLE IF EXISTS attr_nodo")
+        cur.execute("""CREATE TABLE attr_nodo (
+                           nodo_id        integer PRIMARY KEY REFERENCES nodos_clave (id),
+                           unido          boolean NOT NULL,   -- unido a la red (si no, aislado desde el inicio)
+                           socios_antes   integer NOT NULL,   -- otros nodos clave que alcanza en operacion
+                           socios_despues double precision NOT NULL,  -- promedio en los escenarios del sismo
+                           r_antes        double precision NOT NULL,  -- socios_antes / (N - 1)
+                           r_despues      double precision NOT NULL,  -- socios_despues / (N - 1)
+                           caida          double precision NOT NULL)  -- r_antes - r_despues""")
+        filas = [(i, u, int(round(sa)), sd, ra, rd, ra - rd) for i, u, sa, sd, ra, rd in
+                 zip(a["nodo_id"], a["unido"], a["socios"], d["socios"], a["r_nodo"], d["r_nodo"])]
+        cur.executemany("INSERT INTO attr_nodo VALUES (%s,%s,%s,%s,%s,%s,%s)", filas)
+        cur.execute("COMMENT ON TABLE attr_nodo IS 'Fiabilidad promedio de cada nodo clave (R_i) antes y despues del sismo; promedio de R_i = ATTR'")
+    con.commit()
 
 
 def guardar_resultado(con, escenario, res):

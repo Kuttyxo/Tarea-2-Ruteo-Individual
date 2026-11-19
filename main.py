@@ -29,7 +29,7 @@ if hasattr(sys.stdout, "reconfigure"):
 import psycopg2
 
 from src import falla as F
-from src.attr import calcular_attr, guardar_resultado
+from src.attr import calcular_attr, guardar_por_nodo, guardar_resultado, resumen_operacion, resumen_sismo
 from src.cargar_infra import FUENTE_POR_DEFECTO, FUENTES, cargar_fibra
 from src.db import PARAMS, SALIDA_DIR, SQL_DIR, conectar, consultar, ejecutar_archivo_sql
 from src.exportar import generar_main_sql
@@ -130,19 +130,36 @@ def paso_attr(con, muestras):
     despues = calcular_attr(con, p_falla=F.p_falla_dict(con), n_muestras=muestras)
     guardar_resultado(con, "operacion", antes)
     guardar_resultado(con, "post_sismo", despues)
+    guardar_por_nodo(con, antes, despues)
+    antes.pop("por_nodo"), despues.pop("por_nodo")
     os.makedirs(SALIDA_DIR, exist_ok=True)
     for nombre, d in (("attr_operacion.json", antes), ("attr_post_sismo.json", despues)):
         with open(os.path.join(SALIDA_DIR, nombre), "w", encoding="utf-8", newline="\n") as f:
             json.dump(d, f, ensure_ascii=False, indent=2)
     print(f"ATTR (Average Two-Terminal Reliability) sobre {antes['n_nodos_clave']} nodos clave ({antes['pares_totales']:,} pares)")
-    print(f"  {'':<40} {'ANTES':>9} {'DESPUES':>9}")
+    print(f"  {'':<42} {'ANTES':>9} {'DESPUES':>9}")
     for nombre, k in (("todos los nodos clave", "total"), ("usuarios-proveedores (recibe-genera)", "genera-recibe"),
                       ("usuarios-intercambio (recibe-intercambia)", "intercambia-recibe"), ("generan-intercambian", "genera-intercambia")):
-        print(f"  {nombre:<40} {antes['ATTR_' + k]:>9.4f} {despues['ATTR_' + k]:>9.4f}")
+        print(f"  {nombre:<42} {antes['ATTR_' + k]:>9.4f} {despues['ATTR_' + k]:>9.4f}")
     dif = despues["ATTR_total"] - antes["ATTR_total"]
     print(f"  diferencia del ATTR total: {dif:+.4f}  ({100 * dif / antes['ATTR_total']:+.1f} %); "
           f"IC 95 % del ATTR despues: +/- {despues['ATTR_total_ic95']:.5f}")
+    _imprimir_nodos(con)
     return antes, despues
+
+
+def _imprimir_nodos(con):
+    op = resumen_operacion(con)
+    print("  En operacion (por que el ATTR es menor que 1): nodos clave por rol -> total | sin fibra (aislados) | unidos pero solos en su fragmento")
+    for rol, tipo, n, sin, solos in op["por_rol"]:
+        print(f"     {rol:<11} {tipo:<27} {n:>4} | {sin:>3} | {solos:>3}")
+    print(f"  {len(op['grupos'])} grupos de nodos clave conectados entre si; los 5 mayores (nodos | genera, intercambia, recibe | regiones):")
+    for comp, n, g, i, r, reg in op["grupos"][:5]:
+        print(f"     {n:>3} | {g:>2} {i:>2} {r:>3} | {reg[:95]}")
+    sis = resumen_sismo(con, 8)
+    print("  Despues del sismo: nodos clave mas afectados (R = fraccion media de los otros nodos clave que alcanza):")
+    for nom, rol, com, reg, sa, sd, ra, rd, c in sis["nodos"]:
+        print(f"     {nom[:30]:<30} {rol:<11} {com or '':<14} {(reg or '')[:22]:<22} R {ra:.4f} -> {rd:.4f} ({100 * (rd / ra - 1):+.0f} %)")
 
 
 def paso_exportar(con):

@@ -119,6 +119,10 @@ def cargar_nodos_clave(con):
     with con.cursor() as cur:  # comuna donde cae cada nodo que aun no la tiene
         cur.execute("""UPDATE nodos_clave n SET cut_com = c.cut_com FROM comunas c
                        WHERE n.cut_com IS NULL AND ST_Intersects(c.geom, n.geom)""")
+        # amarres en la costa que caen en el mar: la comuna mas cercana (solo para informar la ubicacion)
+        cur.execute("""UPDATE nodos_clave n SET cut_com = (SELECT c.cut_com FROM comunas c ORDER BY c.geom <-> n.geom LIMIT 1)
+                       WHERE n.cut_com IS NULL""")
+        cur.execute("UPDATE nodos_clave n SET comuna = c.comuna, region = c.region FROM comunas c WHERE c.cut_com = n.cut_com")
     con.commit()
     resumen = consultar(con, "SELECT rol, tipo, count(*) FROM nodos_clave GROUP BY 1,2 ORDER BY 1,2")
     return resumen, avisos

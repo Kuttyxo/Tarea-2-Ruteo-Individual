@@ -20,7 +20,9 @@ CREATE TABLE nodos_clave (
     rol     text NOT NULL CHECK (rol IN ('genera', 'intercambia', 'recibe')),
     tipo    text NOT NULL,          -- centro de datos | IXP | amarre de cable submarino | comuna
     fuente  text NOT NULL,
-    cut_com text,                   -- comuna donde esta el nodo (si se conoce)
+    cut_com text,                   -- comuna donde esta el nodo (la que lo contiene o, si cae en el mar, la mas cercana)
+    comuna  text,
+    region  text,
     geom    geometry(Point, 4326) NOT NULL
 );
 CREATE INDEX nodos_clave_geom_gix ON nodos_clave USING gist (geom);
