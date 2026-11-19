@@ -9,6 +9,8 @@
 --  3.4 pgr_createTopology asigna source/target (crea la tabla fibra_red_vertices_pgr) agrupando los
 --      puntos que quedan a menos de 0,0001 grados (~11 m);
 --  3.5 pgr_analyzeGraph revisa la red (extremos sin salida, intersecciones, aristas aisladas).
+-- La tabla de aristas trae la columna p_falla con valor 0 por defecto (se llena en 05_probabilidades.sql).
+-- No se agrega ningun enlace sintetico: todas las aristas salen de la capa de fibra.
 
 DROP TABLE IF EXISTS fibra_red CASCADE;
 DROP TABLE IF EXISTS fibra_red_vertices_pgr CASCADE;
@@ -46,6 +48,12 @@ SELECT pgr_createTopology('fibra_red', 0.0001, 'geom', 'id', 'source', 'target')
 -- aristas que quedaron con source = target (dos vertices a menos de 11 m): son bucles sin efecto en la conectividad
 ALTER TABLE fibra_red ADD COLUMN bucle boolean;
 UPDATE fibra_red SET bucle = (source = target);
+
+-- probabilidad de falla de cada enlace: 0 por defecto (red en operacion, nada falla).
+-- La llena sql/05_probabilidades.sql con el modelo del terremoto.
+ALTER TABLE fibra_red ADD COLUMN p_falla double precision NOT NULL DEFAULT 0
+    CHECK (p_falla >= 0 AND p_falla <= 1);
+COMMENT ON COLUMN fibra_red.p_falla IS 'Probabilidad de falla del enlace por el sismo (0 por defecto = en operacion)';
 
 CREATE INDEX fibra_red_source_ix ON fibra_red (source);
 CREATE INDEX fibra_red_target_ix ON fibra_red (target);

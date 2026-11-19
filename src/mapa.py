@@ -72,6 +72,7 @@ info.onAdd = function(){
     '</table><div style="margin-top:4px;color:#555">'+DATA.attr_nota+'</div>'+
     '<h4 style="margin-top:8px">Probabilidad de falla del enlace</h4>'+
     [['< 2 %','#1a9850'],['2–5 %','#91cf60'],['5–10 %','#fee08b'],['10–20 %','#fc8d59'],['20–40 %','#d73027'],['≥ 40 %','#7f0000']].map(x=>'<span class="sw" style="background:'+x[1]+'"></span>'+x[0]).join('<br>')+
+    '<div style="margin-top:4px;color:#555">Todos los enlaces son fibra detectada: no hay enlaces sintéticos.</div>'+
     '<h4 style="margin-top:8px">Nodos clave</h4><span class="dot" style="background:#1565c0"></span>generan (centros de datos)<br><span class="dot" style="background:#6a1b9a"></span>intercambian (IXP, amarres de cables)<br><span class="dot" style="background:#9e9e9e"></span>reciben (comunas); borde punteado = sin fibra';
   L.DomEvent.disableClickPropagation(d); return d; };
 info.addTo(map);
@@ -89,14 +90,14 @@ def _radio_para_pga(pga_objetivo, mag, prof, sitio):
     return math.sqrt(max((lo + hi) / 2, prof) ** 2 - prof ** 2)   # a distancia sobre el suelo (epicentral)
 
 
-def construir_datos(con, res_prob):
-    s = res_prob["sismo"]
+def construir_datos(con):
+    """Todo sale de la base: tramos y probabilidades de la vista falla_tramo (sobre fibra_red.p_falla), nodos y sismo."""
+    s = F.datos_sismo(con)
+    sitio = consultar(con, "SELECT sitio FROM parametros_falla")[0][0]
     tramos = []
-    filas = consultar(con, """SELECT n.id, ST_AsGeoJSON(ST_SimplifyPreserveTopology(n.geom, 0.0003), 5), ft.p_falla, ft.largo_km,
-                                     (SELECT avg(pga_g) FROM falla_enlace fe WHERE fe.tramo_id = n.id),
-                                     (SELECT avg(pgv_cm_s) FROM falla_enlace fe WHERE fe.tramo_id = n.id),
-                                     (SELECT avg(dist_hipocentral_km) FROM falla_enlace fe WHERE fe.tramo_id = n.id)
-                              FROM fibra_limpia_noded n JOIN falla_tramo ft ON ft.tramo_id = n.id ORDER BY n.id""")
+    filas = consultar(con, """SELECT tramo_id, ST_AsGeoJSON(ST_SimplifyPreserveTopology(geom, 0.0003), 5), p_falla,
+                                     round(largo_km::numeric, 2), pga_g, pgv_cm_s, dist_hipocentral_km
+                              FROM falla_tramo ORDER BY tramo_id""")
     for i, g, p, km, pga, pgv, d in filas:
         tramos.append({"type": "Feature", "geometry": json.loads(g),
                        "properties": {"id": i, "p": round(float(p), 5), "km": float(km), "pga": float(pga), "pgv": float(pgv), "d": float(d)}})
@@ -105,16 +106,17 @@ def construir_datos(con, res_prob):
                                                            FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id""")]
     anillos = []
     for pga, color in ((0.30, "#b71c1c"), (0.20, "#e65100"), (0.10, "#f9a825"), (0.05, "#558b2f")):
-        anillos.append({"pga": pga, "radio_km": round(_radio_para_pga(pga, s["mag"], s["prof"], res_prob["sitio"])), "color": color})
+        anillos.append({"pga": pga, "radio_km": round(_radio_para_pga(pga, s["mag"], s["prof"], sitio)), "color": color})
     return {"tramos": {"type": "FeatureCollection", "features": tramos}, "nodos": nodos, "anillos": anillos,
             "sismo": {"lat": s["lat"], "lon": s["lon"], "mag": s["mag"], "prof": s["prof"], "id": s["id"], "titulo": "2010 Maule, Chile Earthquake (USGS)"}}
 
 
-def generar_mapa(con, res_prob, attr_antes, attr_despues, ruta=None):
-    datos = construir_datos(con, res_prob)
+def generar_mapa(con, attr_antes, attr_despues, ruta=None):
+    datos = construir_datos(con)
     datos["attr_antes"] = {k: v for k, v in attr_antes.items() if k.startswith("ATTR_") and not k.endswith("ic95")}
     datos["attr_despues"] = {k: v for k, v in attr_despues.items() if k.startswith("ATTR_") and not k.endswith("ic95")}
-    fuente = {"transparencia": "shapefile oficial de Subtel (Transparencia)", "internet_archive": "copia del Internet Archive"}.get(res_prob.get("fuente_fibra"), res_prob.get("fuente_fibra"))
+    fuente_fibra = consultar(con, "SELECT string_agg(DISTINCT fuente, ',') FROM fibra_raw")[0][0]
+    fuente = {"transparencia": "shapefile oficial de Subtel (Transparencia)", "internet_archive": "copia del Internet Archive"}.get(fuente_fibra, fuente_fibra)
     datos["attr_nota"] = (f"Fibra: proyecto Yafün, {fuente}. {attr_despues['muestras']:,} escenarios de falla (Monte Carlo). "
                           f"{attr_antes['n_nodos_unidos_a_la_red']} de {attr_antes['n_nodos_clave']} nodos clave tienen fibra detectada.")
     ruta = ruta or os.path.join(SALIDA_DIR, "mapa.html")

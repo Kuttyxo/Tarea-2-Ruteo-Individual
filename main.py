@@ -1,22 +1,28 @@
 """Tarea 2 individual: resiliencia de la fibra optica chilena ante el terremoto Mw 8,8 de Maule (2010).
 
-Uso (con la base levantada: docker compose up -d):
-    python main.py cargar          # descarga lo que falte y carga a la BD: fibra, topologia, nodos clave, sismo y main.sql
-    python main.py probabilidades  # recalcula las probabilidades de falla, regenera sql/main.sql y lo aplica
+Un solo comando (desde la carpeta del repositorio, con Docker abierto y las dependencias de requirements.txt):
+    python main.py todo            # levanta la base (docker compose), carga todo, ATTR antes y despues, main.sql y mapa
+Comandos sueltos:
+    python main.py cargar          # fibra, topologia, nodos clave, sismo y probabilidades de falla (sql/01..05)
+    python main.py probabilidades  # vuelve a ejecutar el modelo de falla en la base (sql/05_probabilidades.sql)
     python main.py attr            # ATTR antes y despues del terremoto (imprime y guarda salida/attr_*.json)
+    python main.py exportar        # escribe sql/main.sql (volcado completo de la base)
     python main.py mapa            # genera salida/mapa.html (Leaflet) y lo abre en el navegador
-    python main.py todo            # todo lo anterior, en orden
 Opciones: --muestras N (escenarios Monte Carlo, por defecto 5000)   --no-abrir (no abrir el navegador)
          --fuente transparencia|internet_archive (fibra; por defecto el shapefile oficial de Transparencia)
+         --desde-main-sql (en vez de construir la base desde los datos, la carga desde sql/main.sql)
 """
 import argparse
 import json
 import os
+import shutil
+import subprocess
 import sys
 import time
 import webbrowser
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+RAIZ = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, RAIZ)
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
@@ -26,28 +32,59 @@ from src import falla as F
 from src.attr import calcular_attr, guardar_resultado
 from src.cargar_infra import FUENTE_POR_DEFECTO, FUENTES, cargar_fibra
 from src.db import PARAMS, SALIDA_DIR, SQL_DIR, conectar, consultar, ejecutar_archivo_sql
+from src.exportar import generar_main_sql
 from src.mapa import generar_mapa
 from src.nodos_clave import cargar_nodos_clave, unir_nodos_a_red
 from src.sismo import cargar_sismo, descargar_sismo
 
 
-def esperar_bd(segundos=90):
+def _intentar_conectar(segundos):
     fin = time.time() + segundos
     while True:
         try:
             return conectar()
         except psycopg2.OperationalError as e:
             if time.time() > fin:
-                sys.exit(f"No se pudo conectar a la base ({PARAMS['host']}:{PARAMS['port']}): {e}\n"
-                         "¿Esta levantada? Ejecuta: docker compose up -d")
+                return e
             time.sleep(2)
+
+
+def asegurar_bd():
+    """Conecta a la base; si no responde, la levanta con docker compose (docker-compose.yml de este repositorio)."""
+    r = _intentar_conectar(3)
+    if not isinstance(r, Exception):
+        return r
+    if shutil.which("docker") is None:
+        sys.exit(f"No se pudo conectar a la base ({PARAMS['host']}:{PARAMS['port']}) y no se encontro Docker.\n"
+                 "Instala Docker y vuelve a ejecutar, o levanta la base a mano: docker compose up -d")
+    print("== 0. La base no responde: se levanta con 'docker compose up -d' (docker-compose.yml de este repositorio)")
+    p = subprocess.run(["docker", "compose", "-f", os.path.join(RAIZ, "docker-compose.yml"), "up", "-d"],
+                       capture_output=True, text=True)
+    print("   " + (p.stdout + p.stderr).strip().replace("\n", "\n   "))
+    if p.returncode != 0:
+        sys.exit("docker compose fallo. ¿Esta abierto Docker Desktop (o el servicio de Docker)?")
+    r = _intentar_conectar(120)
+    if isinstance(r, Exception):
+        sys.exit(f"La base no respondio a tiempo ({PARAMS['host']}:{PARAMS['port']}): {r}")
+    print(f"   base lista en {PARAMS['host']}:{PARAMS['port']} (base '{PARAMS['dbname']}')")
+    return r
+
+
+def _imprimir_probabilidades(con):
+    r = F.resumen_sql(con)
+    print(f"   {r['aristas']:,} aristas con p_falla en [{r['p_min']:.4f}, {r['p_max']:.4f}] "
+          f"(fuera de [0,1]: {r['fuera_de_rango']}); cortes esperados en la red: {r['cortes_esperados']:.1f}")
+    for titulo, filas in (("mas afectados", r["mas_afectados"]), ("menos afectados", r["menos_afectados"])):
+        print(f"   tramos de >= 5 km {titulo}:")
+        for t, km, d, pga, pgv, p in filas:
+            print(f"      tramo {t:>5}: {km:>6} km, a {d:>5} km del hipocentro, PGA {pga} g, PGV {pgv} cm/s -> P = {p:.4f}")
 
 
 def paso_cargar(con, fuente=FUENTE_POR_DEFECTO):
     print(f"== 1. Infraestructura: fibra optica detectada del proyecto Yafun (estudio NIC Chile / CORFO / Subtel), fuente: {fuente}")
     n, km = cargar_fibra(con, fuente)
     print(f"   fibra_raw: {n} polilineas, {km} km")
-    print("== 2. Topologia con pgRouting (pgr_nodeNetwork + pgr_createTopology + pgr_analyzeGraph)")
+    print("== 2. Topologia con pgRouting (pgr_nodeNetwork + pgr_createTopology + pgr_analyzeGraph); p_falla = 0 por defecto")
     ejecutar_archivo_sql(con, "03_topologia.sql")
     a, v, c = consultar(con, """SELECT (SELECT count(*) FROM fibra_red), (SELECT count(*) FROM fibra_red_vertices_pgr),
                                        (SELECT count(DISTINCT component) FROM pgr_connectedComponents(
@@ -60,47 +97,58 @@ def paso_cargar(con, fuente=FUENTE_POR_DEFECTO):
     for t in unir_nodos_a_red(con):
         print(f"    unidos a la red: {t[0]:<12} {t[1]:<27} {t[3]}/{t[2]}")
     print("== 4. Sismo (GeoJSON del USGS)")
-    estado, _ = descargar_sismo()
+    descargar_sismo()
     for f in cargar_sismo(con):
         print(f"   {f[0]}  Mw {f[1]}  prof. {f[5]} km  epicentro ({f[7]}, {f[6]})")
-    print("== 5. Probabilidades de falla (sql/main.sql): se regenera siempre para que calce con la topologia recien creada")
-    ruta = F.generar_main_sql(F.calcular_probabilidades(con), os.path.join(SQL_DIR, "main.sql"))
-    with open(ruta, encoding="utf-8") as f:
-        sql = f.read()
-    with con.cursor() as cur:
-        cur.execute(sql)
-    con.commit()
-    print("   falla_enlace:", consultar(con, "SELECT count(*) FROM falla_enlace")[0][0], "filas")
+    paso_probabilidades(con, "5")
 
 
-def paso_probabilidades(con):
-    res = F.calcular_probabilidades(con)
-    ruta = F.generar_main_sql(res, os.path.join(SQL_DIR, "main.sql"))
+def paso_desde_main_sql(con):
+    ruta = os.path.join(SQL_DIR, "main.sql")
+    print(f"== 1-5. Se carga la base completa desde {ruta} ({os.path.getsize(ruta) / 1e6:.1f} MB)")
     with open(ruta, encoding="utf-8") as f:
         sql = f.read()
+    con.autocommit = True                      # main.sql trae su propio BEGIN/COMMIT
     with con.cursor() as cur:
         cur.execute(sql)
-    con.commit()
-    print(f"main.sql regenerado y aplicado: {ruta}")
-    print(f"cortes esperados en la red: {res['lambda'].sum():.0f}; probabilidad mediana por arista: {sorted(res['p_falla'])[len(res['p_falla'])//2]:.4f}")
+    con.autocommit = False
+    for t, n in consultar(con, """SELECT 'fibra_raw', count(*) FROM fibra_raw UNION ALL SELECT 'fibra_red', count(*) FROM fibra_red
+                                  UNION ALL SELECT 'fibra_red_vertices_pgr', count(*) FROM fibra_red_vertices_pgr
+                                  UNION ALL SELECT 'nodos_clave', count(*) FROM nodos_clave UNION ALL SELECT 'sismo', count(*) FROM sismo"""):
+        print(f"   {t}: {n:,} filas")
+
+
+def paso_probabilidades(con, numero="5"):
+    print(f"== {numero}. Probabilidad de falla de cada enlace, calculada en la base (sql/05_probabilidades.sql, ST_Distance en metros)")
+    F.aplicar_modelo_sql(con)
+    _imprimir_probabilidades(con)
 
 
 def paso_attr(con, muestras):
+    print(f"== 6. ATTR antes y despues del terremoto ({muestras:,} escenarios Monte Carlo)")
     antes = calcular_attr(con)
     despues = calcular_attr(con, p_falla=F.p_falla_dict(con), n_muestras=muestras)
     guardar_resultado(con, "operacion", antes)
     guardar_resultado(con, "post_sismo", despues)
     os.makedirs(SALIDA_DIR, exist_ok=True)
     for nombre, d in (("attr_operacion.json", antes), ("attr_post_sismo.json", despues)):
-        with open(os.path.join(SALIDA_DIR, nombre), "w", encoding="utf-8") as f:
+        with open(os.path.join(SALIDA_DIR, nombre), "w", encoding="utf-8", newline="\n") as f:
             json.dump(d, f, ensure_ascii=False, indent=2)
     print(f"ATTR (Average Two-Terminal Reliability) sobre {antes['n_nodos_clave']} nodos clave ({antes['pares_totales']:,} pares)")
     print(f"  {'':<40} {'ANTES':>9} {'DESPUES':>9}")
     for nombre, k in (("todos los nodos clave", "total"), ("usuarios-proveedores (recibe-genera)", "genera-recibe"),
                       ("usuarios-intercambio (recibe-intercambia)", "intercambia-recibe"), ("generan-intercambian", "genera-intercambia")):
         print(f"  {nombre:<40} {antes['ATTR_' + k]:>9.4f} {despues['ATTR_' + k]:>9.4f}")
-    print(f"  cambio relativo del ATTR total: {100 * (despues['ATTR_total'] / antes['ATTR_total'] - 1):+.1f} %  ({muestras:,} escenarios)")
+    dif = despues["ATTR_total"] - antes["ATTR_total"]
+    print(f"  diferencia del ATTR total: {dif:+.4f}  ({100 * dif / antes['ATTR_total']:+.1f} %); "
+          f"IC 95 % del ATTR despues: +/- {despues['ATTR_total_ic95']:.5f}")
     return antes, despues
+
+
+def paso_exportar(con):
+    print("== 7. main.sql: volcado completo de la base (infraestructura + topologia + nodos + sismo + probabilidades + ATTR)")
+    ruta, conteo = generar_main_sql(con, os.path.join(SQL_DIR, "main.sql"))
+    print(f"   {ruta} ({os.path.getsize(ruta) / 1e6:.1f} MB): " + ", ".join(f"{t} {n:,}" for t, n in conteo.items()))
 
 
 def cargar_attr_guardado(con, muestras):
@@ -113,31 +161,39 @@ def cargar_attr_guardado(con, muestras):
 
 
 def paso_mapa(con, muestras, abrir):
+    print("== 8. Mapa Leaflet")
     antes, despues = cargar_attr_guardado(con, muestras)
-    res = F.calcular_probabilidades(con)
-    ruta = generar_mapa(con, res, antes, despues)
-    print("mapa generado:", ruta)
+    ruta = generar_mapa(con, antes, despues)
+    print("   mapa generado:", ruta)
     if abrir:
         webbrowser.open("file:///" + ruta.replace("\\", "/"))
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("comando", choices=["cargar", "probabilidades", "attr", "mapa", "todo"])
+    ap.add_argument("comando", choices=["cargar", "probabilidades", "attr", "exportar", "mapa", "todo"])
     ap.add_argument("--muestras", type=int, default=5000)
     ap.add_argument("--fuente", choices=sorted(FUENTES), default=FUENTE_POR_DEFECTO,
                     help="fibra: shapefile oficial de Transparencia (por defecto) o la copia del Internet Archive")
+    ap.add_argument("--desde-main-sql", action="store_true", help="cargar la base desde sql/main.sql en vez de construirla")
     ap.add_argument("--no-abrir", action="store_true")
     a = ap.parse_args()
-    con = esperar_bd()
+    inicio = time.time()
+    con = asegurar_bd()
     if a.comando in ("cargar", "todo"):
-        paso_cargar(con, a.fuente)
+        if a.desde_main_sql:
+            paso_desde_main_sql(con)
+        else:
+            paso_cargar(con, a.fuente)
     if a.comando == "probabilidades":
         paso_probabilidades(con)
     if a.comando in ("attr", "todo"):
         paso_attr(con, a.muestras)
+    if a.comando == "exportar" or (a.comando == "todo" and not a.desde_main_sql):
+        paso_exportar(con)
     if a.comando in ("mapa", "todo"):
         paso_mapa(con, a.muestras, not a.no_abrir)
+    print(f"listo en {time.time() - inicio:.0f} s")
 
 
 if __name__ == "__main__":
