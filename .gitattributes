@@ -1,0 +1,13 @@
+# Texto con fin de línea LF en el repositorio (igual en Windows y Linux)
+* text=auto eol=lf
+
+# Datos binarios (shapefile): no tocar
+*.shp binary
+*.shx binary
+*.dbf binary
+*.cpg binary
+*.sbn binary
+*.sbx binary
+*.zip binary
+*.png binary
+*.jpg binary

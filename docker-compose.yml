@@ -1,0 +1,22 @@
+# Base de datos de la Tarea 2 individual: PostgreSQL 16 + PostGIS 3.5 + pgRouting 3.7.3
+# (se usa la 3.7 porque pgr_createTopology queda obsoleta en la 3.8 y se elimina en la 4.0)
+services:
+  db:
+    image: pgrouting/pgrouting:16-3.5-3.7.3
+    container_name: tarea2_resiliencia_db
+    environment:
+      POSTGRES_USER: tarea2
+      POSTGRES_PASSWORD: tarea2   # solo uso local, la base no se expone fuera de este computador
+      POSTGRES_DB: resiliencia
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata_tarea2:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tarea2 -d resiliencia"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  pgdata_tarea2:

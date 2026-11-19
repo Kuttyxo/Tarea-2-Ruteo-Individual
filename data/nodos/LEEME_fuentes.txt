@@ -1,0 +1,5 @@
+Descargado el 2026-11-11 20:48
+comunas_dpa2023.geojson: https://services5.arcgis.com/i7S5PSnIJAUcWvSE/arcgis/rest/services/DPA_COMUNAS_2023/FeatureServer/0/query?where=1%3D1&outFields=cut_reg%2Ccut_prov%2Ccut_com%2Cregion%2Cprovincia%2Ccomuna&outSR=4326&maxAllowableOffset=0.001&f=geojson&resultRecordCount=1000
+peeringdb_ix_CL.json: https://www.peeringdb.com/api/ix?country=CL
+peeringdb_fac_CL.json: https://www.peeringdb.com/api/fac?country=CL
+cables_landing_points_mundo.json: https://www.submarinecablemap.com/api/v3/landing-point/landing-point-geo.json
