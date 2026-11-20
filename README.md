@@ -11,7 +11,7 @@ daño estimado y los ATTR.
 Requisitos: Docker (Docker Desktop en Windows o macOS) abierto, y Python 3 con las librerías de `requirements.txt` (probado con Python 3.13.5).
 
 ```bash
-git clone <url-del-repositorio> && cd <carpeta-del-repositorio>
+git clone https://github.com/Kuttyxo/Tarea-2-Ruteo-Individual.git && cd Tarea-2-Ruteo-Individual
 pip install -r requirements.txt     # una sola vez
 python main.py todo                 # TODO el flujo
 ```
