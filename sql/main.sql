@@ -1,5 +1,5 @@
 -- main.sql: base de datos completa de la Tarea 2 individual (Ruteo Resiliente en Redes).
--- Generado por main.py el 2026-11-19 21:37 en PostgreSQL 16.9 (Debian 16.9-1.pgdg110+1) + PostGIS 3.5.2 + pgRouting 3.7.3.
+-- Generado por main.py el 2026-11-19 21:38 en PostgreSQL 16.9 (Debian 16.9-1.pgdg110+1) + PostGIS 3.5.2 + pgRouting 3.7.3.
 --
 -- Contiene: infraestructura (fibra_raw), topologia (fibra_red con source/target/p_falla y fibra_red_vertices_pgr),
 -- nodos clave (nodos_clave, nodo_red), sismo (sismo), modelo y probabilidades de falla (youngs1997_coef,

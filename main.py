@@ -163,7 +163,7 @@ def escribir_tabla_nodos(con, ruta):
                               FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id JOIN attr_nodo a ON a.nodo_id = n.id
                               ORDER BY n.id""")
     with open(ruta, "w", encoding="utf-8-sig", newline="") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["id", "nombre", "rol", "tipo", "fuente", "comuna", "region", "lat", "lon", "vertice_topologia",
                     "dist_al_vertice_km", "unido_a_la_red", "alcanza_antes", "alcanza_despues_media", "R_antes", "R_despues"])
         w.writerows(filas)
