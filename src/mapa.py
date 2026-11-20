@@ -114,7 +114,8 @@ def construir_datos(con):
              for n, r, t, com, x, y, c, d, sa, sd in consultar(con, """
                  SELECT n.nombre, n.rol, n.tipo, n.comuna, ST_X(n.geom), ST_Y(n.geom), r.conectado, r.dist_m,
                         a.socios_antes, a.socios_despues
-                 FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id JOIN attr_nodo a ON a.nodo_id = n.id""")]
+                 FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id JOIN attr_nodo a ON a.nodo_id = n.id
+                 ORDER BY n.id""")]   # orden fijo: el mapa sale identico en cualquier base
     anillos = []
     for pga, color in ((0.30, "#b71c1c"), (0.20, "#e65100"), (0.10, "#f9a825"), (0.05, "#558b2f")):
         anillos.append({"pga": pga, "radio_km": round(_radio_para_pga(pga, s["mag"], s["prof"], sitio)), "color": color})
