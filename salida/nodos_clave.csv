@@ -1,0 +1,661 @@
+﻿id,nombre,rol,tipo,fuente,comuna,region,lat,lon,vertice_topologia,dist_al_vertice_km,unido_a_la_red,alcanza_antes,alcanza_despues_media,R_antes,R_despues
+1,Iquique,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Iquique,Tarapacá,-20.75225,-70.11401,15408,23.81,True,2,1.75,0.00303,0.00265
+2,Alto Hospicio,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Alto Hospicio,Tarapacá,-20.20030,-70.00993,15274,4.44,True,0,0.00,0.00000,0.00000
+3,Pozo Almonte,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pozo Almonte,Tarapacá,-20.76675,-69.49013,16152,17.62,True,23,7.36,0.03490,0.01117
+4,Camiña,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Camiña,Tarapacá,-19.38005,-69.48881,,,False,0,0.00,0.00000,0.00000
+5,Colchane,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Colchane,Tarapacá,-19.34985,-68.75337,,,False,0,0.00,0.00000,0.00000
+6,Huara,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Huara,Tarapacá,-19.56275,-69.26762,5717,65.25,True,3,2.85,0.00455,0.00433
+7,Pica,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pica,Tarapacá,-20.41520,-69.10747,18311,24.62,True,0,0.00,0.00000,0.00000
+8,Antofagasta,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Antofagasta,Antofagasta,-24.23145,-69.32282,16075,5.99,True,23,9.11,0.03490,0.01382
+9,Mejillones,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Mejillones,Antofagasta,-22.89075,-70.12801,1573,15.07,True,1,1.00,0.00152,0.00152
+10,Sierra Gorda,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Sierra Gorda,Antofagasta,-23.24405,-69.32128,15815,32.72,True,23,12.94,0.03490,0.01964
+11,Taltal,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Taltal,Antofagasta,-25.31260,-69.78547,16233,8.07,True,23,7.23,0.03490,0.01097
+12,Calama,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Calama,Antofagasta,-22.10190,-68.52387,365,48.46,True,23,10.65,0.03490,0.01616
+13,Ollagüe,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ollagüe,Antofagasta,-21.47665,-68.34601,,,False,0,0.00,0.00000,0.00000
+14,San Pedro de Atacama,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Pedro de Atacama,Antofagasta,-23.35245,-67.90246,,,False,0,0.00,0.00000,0.00000
+15,Tocopilla,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tocopilla,Antofagasta,-22.02930,-69.96967,18318,24.93,True,1,1.00,0.00152,0.00152
+16,María Elena,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),María Elena,Antofagasta,-22.08530,-69.42600,6009,16.29,True,23,12.14,0.03490,0.01843
+17,Copiapó,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Copiapó,Atacama,-27.42230,-69.85663,11563,27.20,True,7,4.16,0.01062,0.00631
+18,Caldera,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Caldera,Atacama,-27.23790,-70.80882,11604,15.60,True,1,0.96,0.00152,0.00146
+19,Tierra Amarilla,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tierra Amarilla,Atacama,-27.89820,-69.65993,5145,33.07,True,0,0.00,0.00000,0.00000
+20,Chañaral,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chañaral,Atacama,-26.42150,-70.44709,11610,12.87,True,7,3.70,0.01062,0.00562
+21,Diego de Almagro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Diego de Almagro,Atacama,-26.11540,-69.18676,11511,45.83,True,7,3.32,0.01062,0.00504
+22,Vallenar,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Vallenar,Atacama,-28.68320,-70.85501,11479,8.24,True,106,6.52,0.16085,0.00989
+23,Alto del Carmen,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Alto del Carmen,Atacama,-29.05235,-70.16679,,,False,0,0.00,0.00000,0.00000
+24,Freirina,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Freirina,Atacama,-28.73420,-71.21182,18476,26.58,True,1,0.95,0.00152,0.00144
+25,Huasco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Huasco,Atacama,-28.29190,-71.08770,18465,21.89,True,1,0.95,0.00152,0.00144
+26,La Serena,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Serena,Coquimbo,-29.83710,-71.09405,11279,12.24,True,106,10.87,0.16085,0.01649
+27,Coquimbo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coquimbo,Coquimbo,-30.22095,-71.33010,1615,5.63,True,106,8.91,0.16085,0.01353
+28,Andacollo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Andacollo,Coquimbo,-30.25710,-71.10458,,,False,0,0.00,0.00000,0.00000
+29,La Higuera,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Higuera,Coquimbo,-29.37855,-70.93002,11380,11.17,True,106,7.47,0.16085,0.01134
+30,Paiguano,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Paiguano,Coquimbo,-30.22600,-70.38827,11244,15.21,True,106,7.24,0.16085,0.01099
+31,Vicuña,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Vicuña,Coquimbo,-29.87750,-70.43648,11187,15.60,True,106,8.71,0.16085,0.01321
+32,Illapel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Illapel,Coquimbo,-31.58790,-70.94842,10507,15.15,True,106,3.10,0.16085,0.00470
+33,Canela,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Canela,Coquimbo,-31.46450,-71.43532,992,6.49,True,106,5.25,0.16085,0.00797
+34,Los Vilos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Vilos,Coquimbo,-31.93850,-71.25135,16908,9.83,True,106,4.37,0.16085,0.00663
+35,Salamanca,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Salamanca,Coquimbo,-31.90895,-70.65018,10297,22.73,True,106,1.65,0.16085,0.00250
+36,Ovalle,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ovalle,Coquimbo,-30.76310,-71.54873,11847,0.52,True,106,5.89,0.16085,0.00894
+37,Combarbalá,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Combarbalá,Coquimbo,-31.13965,-70.98327,6666,4.66,True,106,5.23,0.16085,0.00793
+38,Monte Patria,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Monte Patria,Coquimbo,-30.90030,-70.69719,10924,27.36,True,106,3.49,0.16085,0.00530
+39,Punitaqui,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Punitaqui,Coquimbo,-30.94280,-71.37645,10976,15.43,True,106,6.78,0.16085,0.01029
+40,Río Hurtado,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Río Hurtado,Coquimbo,-30.45390,-70.67966,482,13.88,True,106,9.12,0.16085,0.01384
+41,Valparaíso,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Valparaíso,Valparaíso,-33.11560,-71.60822,5279,4.49,True,8,5.78,0.01214,0.00877
+42,Casablanca,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Casablanca,Valparaíso,-33.32155,-71.36521,18749,2.04,True,8,3.17,0.01214,0.00482
+43,Concón,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Concón,Valparaíso,-32.95590,-71.46092,4404,5.79,True,2,1.35,0.00303,0.00205
+44,Juan Fernández,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Juan Fernández,Valparaíso,-33.64455,-78.82605,,,False,0,0.00,0.00000,0.00000
+45,Puchuncaví,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puchuncaví,Valparaíso,-32.74505,-71.40053,4446,7.20,True,2,1.38,0.00303,0.00210
+46,Quintero,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quintero,Valparaíso,-32.84680,-71.46780,4428,1.76,True,2,1.54,0.00303,0.00234
+47,Viña del Mar,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Viña del Mar,Valparaíso,-33.02420,-71.52273,,,False,0,0.00,0.00000,0.00000
+48,Isla de Pascua,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Isla de Pascua,Valparaíso,-27.12600,-109.35000,19042,0.87,True,1,0.99,0.00152,0.00150
+49,Los Andes,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Andes,Valparaíso,-32.95765,-70.24075,5530,6.30,True,2,0.95,0.00303,0.00144
+50,Calle Larga,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Calle Larga,Valparaíso,-32.95600,-70.52784,18976,14.45,True,106,10.72,0.16085,0.01627
+51,Rinconada,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Rinconada,Valparaíso,-32.87230,-70.71229,5406,2.97,True,106,13.03,0.16085,0.01978
+52,San Esteban,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Esteban,Valparaíso,-32.67100,-70.35862,5435,21.92,True,2,1.13,0.00303,0.00171
+53,La Ligua,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Ligua,Valparaíso,-32.37540,-71.26358,18858,7.56,True,106,17.04,0.16085,0.02585
+54,Cabildo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cabildo,Valparaíso,-32.42345,-70.86224,13394,8.55,True,106,13.00,0.16085,0.01972
+55,Papudo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Papudo,Valparaíso,-32.47865,-71.36840,1268,0.45,True,106,15.60,0.16085,0.02368
+56,Petorca,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Petorca,Valparaíso,-32.20045,-70.81545,13431,12.15,True,106,8.26,0.16085,0.01254
+57,Zapallar,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Zapallar,Valparaíso,-32.58960,-71.32544,13551,0.64,True,106,6.04,0.16085,0.00916
+58,Quillota,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quillota,Valparaíso,-32.89930,-71.29634,6737,5.11,True,106,13.92,0.16085,0.02112
+59,Calera,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Calera,Valparaíso,-32.80715,-71.18635,22518,1.63,True,106,17.86,0.16085,0.02710
+60,Hijuelas,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Hijuelas,Valparaíso,-32.86340,-71.08937,7335,2.34,True,106,18.56,0.16085,0.02817
+61,La Cruz,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Cruz,Valparaíso,-32.82340,-71.25790,5360,2.85,True,106,15.74,0.16085,0.02389
+62,Nogales,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Nogales,Valparaíso,-32.69885,-71.15964,12992,3.28,True,0,0.00,0.00000,0.00000
+63,San Antonio,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Antonio,Valparaíso,-33.67085,-71.50559,5644,4.12,True,9,1.21,0.01366,0.00183
+64,Algarrobo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Algarrobo,Valparaíso,-33.32650,-71.58929,5753,3.92,True,0,0.00,0.00000,0.00000
+65,Cartagena,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cartagena,Valparaíso,-33.53075,-71.46060,5735,12.33,True,3,2.47,0.00455,0.00375
+66,El Quisco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),El Quisco,Valparaíso,-33.41050,-71.64450,3617,4.70,True,3,1.94,0.00455,0.00294
+67,El Tabo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),El Tabo,Valparaíso,-33.48260,-71.56409,5749,4.30,True,3,2.44,0.00455,0.00371
+68,Santo Domingo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Santo Domingo,Valparaíso,-33.78910,-71.67629,13767,4.83,True,9,1.59,0.01366,0.00241
+69,San Felipe,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Felipe,Valparaíso,-32.73600,-70.71839,6747,1.40,True,106,16.35,0.16085,0.02481
+70,Catemu,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Catemu,Valparaíso,-32.71375,-70.95219,17769,7.25,True,106,17.65,0.16085,0.02678
+71,Llaillay,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Llaillay,Valparaíso,-32.89410,-70.88452,7351,4.22,True,106,17.73,0.16085,0.02691
+72,Panquehue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Panquehue,Valparaíso,-32.78400,-70.81540,2759,2.35,True,106,17.15,0.16085,0.02603
+73,Putaendo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Putaendo,Valparaíso,-32.48350,-70.56923,13215,12.92,True,106,12.19,0.16085,0.01850
+74,Santa María,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Santa María,Valparaíso,-32.69160,-70.61665,13131,5.67,True,2,0.80,0.00303,0.00121
+75,Quilpué,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quilpué,Valparaíso,-33.12475,-71.37196,18728,0.89,True,106,5.45,0.16085,0.00827
+76,Limache,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Limache,Valparaíso,-33.04005,-71.23656,125,4.17,True,106,7.35,0.16085,0.01115
+77,Olmué,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Olmué,Valparaíso,-33.03740,-71.10064,4385,1.47,True,106,7.55,0.16085,0.01146
+78,Villa Alemana,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Villa Alemana,Valparaíso,-33.06325,-71.34312,41,0.22,True,106,7.09,0.16085,0.01075
+79,Rancagua,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Rancagua,Libertador General Bernardo O'Higgins,-34.12390,-70.81883,3265,6.30,True,20,5.34,0.03035,0.00810
+80,Codegua,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Codegua,Libertador General Bernardo O'Higgins,-34.03675,-70.66592,104,0.28,True,19,10.05,0.02883,0.01524
+81,Coinco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coinco,Libertador General Bernardo O'Higgins,-34.27575,-70.95774,3670,0.55,True,20,7.60,0.03035,0.01153
+82,Coltauco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coltauco,Libertador General Bernardo O'Higgins,-34.28680,-71.10487,21531,0.96,True,20,7.94,0.03035,0.01205
+83,Doñihue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Doñihue,Libertador General Bernardo O'Higgins,-34.20385,-70.91005,3285,1.05,True,20,6.92,0.03035,0.01050
+84,Graneros,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Graneros,Libertador General Bernardo O'Higgins,-34.06690,-70.73982,12424,0.76,True,19,9.51,0.02883,0.01443
+85,Las Cabras,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Las Cabras,Libertador General Bernardo O'Higgins,-34.17090,-71.29062,4507,9.77,True,20,5.34,0.03035,0.00811
+86,Machalí,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Machalí,Libertador General Bernardo O'Higgins,-34.35660,-70.23690,21635,32.07,True,0,0.00,0.00000,0.00000
+87,Malloa,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Malloa,Libertador General Bernardo O'Higgins,-34.48265,-70.84722,1692,9.95,True,20,8.28,0.03035,0.01257
+88,Mostazal,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Mostazal,Libertador General Bernardo O'Higgins,-33.94700,-70.59798,21818,3.87,True,0,0.00,0.00000,0.00000
+89,Olivar,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Olivar,Libertador General Bernardo O'Higgins,-34.21470,-70.81666,19251,0.16,True,2,1.61,0.00303,0.00244
+90,Peumo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Peumo,Libertador General Bernardo O'Higgins,-34.33355,-71.23877,2985,0.57,True,20,9.05,0.03035,0.01374
+91,Pichidegua,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pichidegua,Libertador General Bernardo O'Higgins,-34.36120,-71.34083,16830,2.31,True,20,8.26,0.03035,0.01254
+92,Quinta de Tilcoco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quinta de Tilcoco,Libertador General Bernardo O'Higgins,-34.35840,-71.00064,22630,2.12,True,20,7.76,0.03035,0.01177
+93,Rengo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Rengo,Libertador General Bernardo O'Higgins,-34.44575,-70.75937,16531,10.06,True,20,6.77,0.03035,0.01028
+94,Requínoa,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Requínoa,Libertador General Bernardo O'Higgins,-34.35330,-70.61480,21630,20.86,True,2,1.79,0.00303,0.00271
+95,San Vicente,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Vicente,Libertador General Bernardo O'Higgins,-34.45265,-71.10524,4001,3.14,True,20,10.10,0.03035,0.01532
+96,Pichilemu,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pichilemu,Libertador General Bernardo O'Higgins,-34.36445,-71.89674,13645,0.70,True,0,0.00,0.00000,0.00000
+97,La Estrella,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Estrella,Libertador General Bernardo O'Higgins,-34.20365,-71.58991,1902,5.47,True,9,2.91,0.01366,0.00442
+98,Litueche,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Litueche,Libertador General Bernardo O'Higgins,-34.10855,-71.70386,19124,2.56,True,9,2.29,0.01366,0.00347
+99,Marchihue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Marchihue,Libertador General Bernardo O'Higgins,-34.36710,-71.64263,19179,3.26,True,9,2.57,0.01366,0.00390
+100,Navidad,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Navidad,Libertador General Bernardo O'Higgins,-34.00705,-71.80712,19086,7.32,True,9,2.05,0.01366,0.00312
+101,Paredones,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Paredones,Libertador General Bernardo O'Higgins,-34.67560,-71.93904,,,False,0,0.00,0.00000,0.00000
+102,San Fernando,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Fernando,Libertador General Bernardo O'Higgins,-34.74135,-70.58648,7468,40.33,True,20,5.28,0.03035,0.00800
+103,Chépica,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chépica,Libertador General Bernardo O'Higgins,-34.79240,-71.40195,20869,13.34,True,62,2.41,0.09408,0.00365
+104,Chimbarongo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chimbarongo,Libertador General Bernardo O'Higgins,-34.73785,-71.01190,21616,1.47,True,1,0.86,0.00152,0.00131
+105,Lolol,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lolol,Libertador General Bernardo O'Higgins,-34.78130,-71.64485,8088,4.51,True,62,1.14,0.09408,0.00173
+106,Nancagua,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Nancagua,Libertador General Bernardo O'Higgins,-34.67300,-71.20681,17322,0.48,True,62,3.15,0.09408,0.00478
+107,Palmilla,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Palmilla,Libertador General Bernardo O'Higgins,-34.52570,-71.36567,2995,0.54,True,0,0.00,0.00000,0.00000
+108,Peralillo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Peralillo,Libertador General Bernardo O'Higgins,-34.46380,-71.48212,589,1.60,True,9,2.12,0.01366,0.00322
+109,Placilla,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Placilla,Libertador General Bernardo O'Higgins,-34.61815,-71.08374,19272,0.83,True,62,2.67,0.09408,0.00406
+110,Pumanque,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pumanque,Libertador General Bernardo O'Higgins,-34.59390,-71.68183,,,False,0,0.00,0.00000,0.00000
+111,Santa Cruz,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Santa Cruz,Libertador General Bernardo O'Higgins,-34.64290,-71.40182,8147,1.69,True,62,2.96,0.09408,0.00449
+112,Talca,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Talca,Maule,-35.42100,-71.60334,18845,0.38,True,62,5.55,0.09408,0.00843
+113,Constitución,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Constitución,Maule,-35.34855,-72.22720,7973,12.31,True,62,1.37,0.09408,0.00207
+114,Curepto,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curepto,Maule,-35.15850,-71.95661,15626,21.10,True,62,1.24,0.09408,0.00189
+115,Empedrado,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Empedrado,Maule,-35.60620,-72.30567,,,False,0,0.00,0.00000,0.00000
+116,Maule,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Maule,Maule,-35.51785,-71.69672,19444,0.61,True,62,8.67,0.09408,0.01316
+117,Pelarco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pelarco,Maule,-35.38755,-71.39892,17285,4.66,True,0,0.00,0.00000,0.00000
+118,Pencahue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pencahue,Maule,-35.31025,-71.81912,9696,9.68,True,62,3.28,0.09408,0.00497
+119,Río Claro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Río Claro,Maule,-35.29745,-71.25673,17016,1.54,True,0,0.00,0.00000,0.00000
+120,San Clemente,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Clemente,Maule,-35.77500,-70.70562,18830,7.45,True,0,0.00,0.00000,0.00000
+121,San Rafael,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Rafael,Maule,-35.29095,-71.47997,6775,3.37,True,62,3.32,0.09408,0.00503
+122,Cauquenes,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cauquenes,Maule,-35.96885,-72.34792,6788,1.47,True,62,1.48,0.09408,0.00225
+123,Chanco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chanco,Maule,-35.71295,-72.45783,4892,6.87,True,62,0.83,0.09408,0.00126
+124,Pelluhue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pelluhue,Maule,-35.90080,-72.56210,4871,8.70,True,62,1.00,0.09408,0.00152
+125,Curicó,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curicó,Maule,-35.22320,-70.90733,3442,39.36,True,1,0.45,0.00152,0.00068
+126,Hualañé,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Hualañé,Maule,-34.95835,-71.66742,8027,1.40,True,62,0.78,0.09408,0.00118
+127,Licantén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Licantén,Maule,-34.96785,-71.93653,7986,2.99,True,62,0.69,0.09408,0.00105
+128,Molina,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Molina,Maule,-35.32840,-70.79267,16995,48.83,True,2,0.82,0.00303,0.00125
+129,Rauco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Rauco,Maule,-34.94385,-71.40896,22642,5.84,True,1,0.45,0.00152,0.00068
+130,Romeral,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Romeral,Maule,-35.07930,-70.68251,19394,42.53,True,0,0.00,0.00000,0.00000
+131,Sagrada Familia,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Sagrada Familia,Maule,-35.11400,-71.54953,19417,19.94,True,2,0.98,0.00303,0.00149
+132,Teno,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Teno,Maule,-34.89525,-70.96690,19402,16.89,True,0,0.00,0.00000,0.00000
+133,Vichuquén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Vichuquén,Maule,-34.83240,-72.01076,,,False,0,0.00,0.00000,0.00000
+134,Linares,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Linares,Maule,-35.96420,-71.29444,17326,29.05,True,62,4.21,0.09408,0.00639
+135,Colbún,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Colbún,Maule,-36.05485,-70.81961,17346,64.90,True,62,1.61,0.09408,0.00244
+136,Longaví,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Longaví,Maule,-36.08700,-71.53829,19480,18.82,True,62,3.80,0.09408,0.00577
+137,Parral,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Parral,Maule,-36.22930,-71.76900,6233,3.74,True,62,2.92,0.09408,0.00443
+138,Retiro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Retiro,Maule,-36.01760,-71.79553,22597,4.11,True,62,4.44,0.09408,0.00674
+139,San Javier,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Javier,Maule,-35.63905,-71.95100,4137,4.56,True,62,2.63,0.09408,0.00399
+140,Villa Alegre,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Villa Alegre,Maule,-35.69565,-71.69724,2924,0.28,True,62,7.05,0.09408,0.01069
+141,Yerbas Buenas,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Yerbas Buenas,Maule,-35.68690,-71.52630,17384,7.45,True,62,3.70,0.09408,0.00561
+142,Concepción,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Concepción,Biobío,-36.84890,-72.96010,9993,3.37,True,68,3.71,0.10319,0.00564
+143,Coronel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coronel,Biobío,-37.00315,-73.08148,8492,5.89,True,3,0.82,0.00455,0.00124
+144,Chiguayante,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chiguayante,Biobío,-36.90780,-72.99565,2846,3.11,True,68,2.86,0.10319,0.00435
+145,Florida,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Florida,Biobío,-36.80845,-72.72403,2412,1.88,True,68,1.08,0.10319,0.00164
+146,Hualqui,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Hualqui,Biobío,-37.04715,-72.85434,2811,10.88,True,68,1.45,0.10319,0.00220
+147,Lota,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lota,Biobío,-37.12650,-73.11078,19651,5.39,True,3,0.21,0.00455,0.00031
+148,Penco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Penco,Biobío,-36.74370,-72.94799,21114,2.60,True,0,0.00,0.00000,0.00000
+149,San Pedro de la Paz,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Pedro de la Paz,Biobío,-36.89300,-73.10040,8461,3.83,True,3,1.16,0.00455,0.00177
+150,Santa Juana,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Santa Juana,Biobío,-37.25915,-72.91278,19639,9.60,True,0,0.00,0.00000,0.00000
+151,Talcahuano,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Talcahuano,Biobío,-36.70525,-73.13388,17964,2.09,True,68,2.41,0.10319,0.00366
+152,Tomé,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tomé,Biobío,-36.60020,-72.88854,9546,1.57,True,62,0.85,0.09408,0.00130
+153,Hualpén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Hualpén,Biobío,-36.78405,-73.13548,664,2.16,True,68,3.74,0.10319,0.00567
+154,Lebu,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lebu,Biobío,-37.62260,-73.59731,8229,2.90,True,10,1.36,0.01517,0.00206
+155,Arauco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Arauco,Biobío,-37.29945,-73.37941,21182,5.62,True,10,0.85,0.01517,0.00130
+156,Cañete,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cañete,Biobío,-37.90980,-73.42217,632,12.31,True,10,3.19,0.01517,0.00484
+157,Contulmo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Contulmo,Biobío,-38.06800,-73.21516,,,False,0,0.00,0.00000,0.00000
+158,Curanilahue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curanilahue,Biobío,-37.50785,-73.22466,2123,11.27,True,10,3.00,0.01517,0.00455
+159,Los Alamos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Alamos,Biobío,-37.70490,-73.22907,8262,14.06,True,10,3.18,0.01517,0.00482
+160,Tirúa,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tirúa,Biobío,-38.30395,-73.39415,19708,9.60,True,0,0.00,0.00000,0.00000
+161,Los Angeles,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Angeles,Biobío,-37.41975,-72.37219,7887,0.43,True,68,4.30,0.10319,0.00653
+162,Antuco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Antuco,Biobío,-37.33140,-71.52602,9449,8.53,True,0,0.00,0.00000,0.00000
+163,Cabrero,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cabrero,Biobío,-37.05625,-72.35764,9474,1.63,True,68,4.36,0.10319,0.00662
+164,Laja,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Laja,Biobío,-37.31770,-72.57834,188,7.55,True,68,3.35,0.10319,0.00509
+165,Mulchén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Mulchén,Biobío,-37.87355,-72.08136,19710,21.93,True,68,2.89,0.10319,0.00439
+166,Nacimiento,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Nacimiento,Biobío,-37.45380,-72.83252,58,15.13,True,68,3.17,0.10319,0.00481
+167,Negrete,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Negrete,Biobío,-37.59590,-72.55786,19842,1.11,True,68,3.93,0.10319,0.00596
+168,Quilaco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quilaco,Biobío,-37.97930,-71.59714,9333,31.84,True,68,2.05,0.10319,0.00311
+169,Quilleco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quilleco,Biobío,-37.39515,-71.87218,9430,5.51,True,0,0.00,0.00000,0.00000
+170,San Rosendo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Rosendo,Biobío,-37.22090,-72.70041,19854,5.13,True,68,2.48,0.10319,0.00376
+171,Santa Bárbara,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Santa Bárbara,Biobío,-37.63530,-71.81184,9319,8.06,True,68,2.22,0.10319,0.00337
+172,Tucapel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tucapel,Biobío,-37.20755,-71.77317,9452,9.64,True,0,0.00,0.00000,0.00000
+173,Yumbel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Yumbel,Biobío,-37.08390,-72.64356,19855,7.14,True,68,1.79,0.10319,0.00272
+174,Alto Biobío,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Alto Biobío,Biobío,-37.83550,-71.41177,19778,20.56,True,68,0.92,0.10319,0.00139
+175,Temuco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Temuco,La Araucanía,-38.66495,-72.62847,7578,4.33,True,8,4.87,0.01214,0.00739
+176,Carahue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Carahue,La Araucanía,-38.64805,-73.29049,7102,12.63,True,0,0.00,0.00000,0.00000
+177,Cunco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cunco,La Araucanía,-38.95565,-72.03024,20095,2.53,True,0,0.00,0.00000,0.00000
+178,Curarrehue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curarrehue,La Araucanía,-39.30635,-71.51098,7647,8.80,True,33,2.32,0.05008,0.00353
+179,Freire,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Freire,La Araucanía,-38.97285,-72.48716,21887,11.95,True,2,1.33,0.00303,0.00202
+180,Galvarino,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Galvarino,La Araucanía,-38.45735,-72.80109,21866,2.49,True,1,0.89,0.00152,0.00135
+181,Gorbea,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Gorbea,La Araucanía,-39.15780,-72.69548,20100,6.32,True,2,1.48,0.00303,0.00225
+182,Lautaro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lautaro,La Araucanía,-38.54650,-72.26464,20061,12.84,True,68,4.12,0.10319,0.00626
+183,Loncoche,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Loncoche,La Araucanía,-39.36225,-72.65201,3956,1.45,True,33,6.99,0.05008,0.01060
+184,Melipeuco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Melipeuco,La Araucanía,-38.80425,-71.60279,20131,9.68,True,0,0.00,0.00000,0.00000
+185,Nueva Imperial,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Nueva Imperial,La Araucanía,-38.70595,-72.95856,3890,4.41,True,8,2.83,0.01214,0.00430
+186,Padre Las Casas,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Padre Las Casas,La Araucanía,-38.79525,-72.62715,19611,3.51,True,8,4.55,0.01214,0.00690
+187,Perquenco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Perquenco,La Araucanía,-38.43285,-72.44464,11637,2.67,True,68,3.99,0.10319,0.00605
+188,Pitrufquén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pitrufquén,La Araucanía,-39.10580,-72.90251,2886,21.21,True,2,1.58,0.00303,0.00239
+189,Pucón,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pucón,La Araucanía,-39.28585,-71.84737,4080,1.41,True,33,3.92,0.05008,0.00595
+190,Saavedra,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Saavedra,La Araucanía,-38.83225,-73.28543,20133,11.16,True,1,1.00,0.00152,0.00152
+191,Teodoro Schmidt,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Teodoro Schmidt,La Araucanía,-39.06990,-73.21291,21892,2.88,True,2,1.57,0.00303,0.00238
+192,Toltén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Toltén,La Araucanía,-39.21460,-73.04979,20139,10.65,True,2,1.50,0.00303,0.00228
+193,Vilcún,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Vilcún,La Araucanía,-38.70640,-72.09196,20140,12.16,True,1,0.71,0.00152,0.00107
+194,Villarrica,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Villarrica,La Araucanía,-39.29550,-72.21627,7130,0.11,True,33,6.15,0.05008,0.00933
+195,Cholchol,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cholchol,La Araucanía,-38.58535,-72.91649,14208,6.29,True,8,3.40,0.01214,0.00516
+196,Angol,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Angol,La Araucanía,-37.80200,-72.79337,3837,7.47,True,2,0.73,0.00303,0.00111
+197,Collipulli,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Collipulli,La Araucanía,-37.98865,-72.26615,2271,13.84,True,68,2.60,0.10319,0.00394
+198,Curacautín,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curacautín,La Araucanía,-38.43300,-71.78542,,,False,0,0.00,0.00000,0.00000
+199,Ercilla,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ercilla,La Araucanía,-38.06080,-72.43580,7488,3.75,True,68,3.18,0.10319,0.00482
+200,Lonquimay,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lonquimay,La Araucanía,-38.49920,-71.18621,20059,16.30,True,0,0.00,0.00000,0.00000
+201,Los Sauces,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Sauces,La Araucanía,-37.98550,-72.78864,20035,3.57,True,2,0.38,0.00303,0.00058
+202,Lumaco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lumaco,La Araucanía,-38.27545,-73.05259,21115,5.68,True,0,0.00,0.00000,0.00000
+203,Purén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Purén,La Araucanía,-37.99785,-73.06825,,,False,0,0.00,0.00000,0.00000
+204,Renaico,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Renaico,La Araucanía,-37.72495,-72.57454,3001,2.91,True,2,0.59,0.00303,0.00090
+205,Traiguén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Traiguén,La Araucanía,-38.24855,-72.67510,20056,0.61,True,68,1.32,0.10319,0.00201
+206,Victoria,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Victoria,La Araucanía,-38.30120,-72.23291,2809,11.41,True,68,4.06,0.10319,0.00616
+207,Puerto Montt,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puerto Montt,Los Lagos,-41.51455,-72.58225,22397,20.80,True,23,9.63,0.03490,0.01462
+208,Calbuco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Calbuco,Los Lagos,-41.69360,-73.19531,8753,0.99,True,23,7.39,0.03490,0.01121
+209,Cochamó,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cochamó,Los Lagos,-41.75355,-72.19399,,,False,0,0.00,0.00000,0.00000
+210,Fresia,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Fresia,Los Lagos,-41.15300,-73.60511,,,False,0,0.00,0.00000,0.00000
+211,Frutillar,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Frutillar,Los Lagos,-41.09005,-73.08544,76,3.06,True,23,11.19,0.03490,0.01699
+212,Los Muermos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Muermos,Los Lagos,-41.38735,-73.57004,20363,8.75,True,0,0.00,0.00000,0.00000
+213,Llanquihue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Llanquihue,Los Lagos,-41.22110,-73.10854,3452,4.53,True,23,11.45,0.03490,0.01737
+214,Maullín,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Maullín,Los Lagos,-41.63970,-73.48282,12040,8.67,True,0,0.00,0.00000,0.00000
+215,Puerto Varas,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puerto Varas,Los Lagos,-41.13250,-72.34872,7225,53.57,True,23,10.61,0.03490,0.01609
+216,Castro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Castro,Los Lagos,-42.46010,-73.91354,4758,11.53,True,15,9.97,0.02276,0.01513
+217,Ancud,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ancud,Los Lagos,-42.00995,-73.81470,8790,1.59,True,15,8.13,0.02276,0.01234
+218,Chonchi,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chonchi,Los Lagos,-42.68425,-73.89924,9090,7.98,True,15,9.33,0.02276,0.01416
+219,Curaco de Vélez,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curaco de Vélez,Los Lagos,-42.42845,-73.56738,2246,2.46,True,1,0.99,0.00152,0.00150
+220,Dalcahue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Dalcahue,Los Lagos,-42.31430,-73.74908,9210,3.15,True,15,10.00,0.02276,0.01518
+221,Puqueldón,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puqueldón,Los Lagos,-42.63865,-73.61934,,,False,0,0.00,0.00000,0.00000
+222,Queilén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Queilén,Los Lagos,-42.82510,-73.54307,9040,2.74,True,15,6.85,0.02276,0.01039
+223,Quellón,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quellón,Los Lagos,-43.12430,-74.02337,8847,32.28,True,15,6.66,0.02276,0.01010
+224,Quemchi,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quemchi,Los Lagos,-42.13530,-73.51726,827,1.88,True,15,9.60,0.02276,0.01457
+225,Quinchao,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quinchao,Los Lagos,-42.64725,-73.27746,8944,25.12,True,0,0.00,0.00000,0.00000
+226,Osorno,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Osorno,Los Lagos,-40.60495,-73.12448,161,2.32,True,23,9.78,0.03490,0.01484
+227,Puerto Octay,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puerto Octay,Los Lagos,-40.92085,-72.50864,20293,32.02,True,0,0.00,0.00000,0.00000
+228,Purranque,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Purranque,Los Lagos,-40.93090,-73.41956,17427,21.74,True,23,7.85,0.03490,0.01191
+229,Puyehue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puyehue,Los Lagos,-40.71025,-72.38996,17519,18.21,True,23,4.66,0.03490,0.00707
+230,Río Negro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Río Negro,Los Lagos,-40.76690,-73.42606,20281,17.88,True,23,9.65,0.03490,0.01464
+231,San Juan de la Costa,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Juan de la Costa,Los Lagos,-40.49140,-73.53973,,,False,0,0.00,0.00000,0.00000
+232,San Pablo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Pablo,Los Lagos,-40.42315,-73.11906,3034,9.09,True,23,7.94,0.03490,0.01205
+233,Chaitén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chaitén,Los Lagos,-42.99280,-72.50083,12223,1.66,True,24,3.70,0.03642,0.00562
+234,Futaleufú,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Futaleufú,Los Lagos,-43.16100,-71.97680,12619,7.21,True,24,3.91,0.03642,0.00594
+235,Hualaihué,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Hualaihué,Los Lagos,-42.20740,-72.30994,20491,29.91,True,0,0.00,0.00000,0.00000
+236,Palena,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Palena,Los Lagos,-43.65405,-71.91969,12684,3.23,True,24,4.44,0.03642,0.00674
+237,Coihaique,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coihaique,Aysén del General Carlos Ibáñez del Campo,-45.48465,-71.80435,14008,15.08,True,24,10.02,0.03642,0.01520
+238,Lago Verde,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lago Verde,Aysén del General Carlos Ibáñez del Campo,-44.40280,-72.10104,14858,30.17,True,24,7.47,0.03642,0.01134
+239,Aisén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Aisén,Aysén del General Carlos Ibáñez del Campo,-46.03745,-73.15084,14195,68.52,True,24,7.91,0.03642,0.01201
+240,Cisnes,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cisnes,Aysén del General Carlos Ibáñez del Campo,-44.65085,-73.16546,20544,38.67,True,24,6.35,0.03642,0.00964
+241,Guaitecas,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Guaitecas,Aysén del General Carlos Ibáñez del Campo,-43.86220,-74.04901,20582,24.57,True,0,0.00,0.00000,0.00000
+242,Cochrane,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cochrane,Aysén del General Carlos Ibáñez del Campo,-47.39755,-72.81515,14544,23.40,True,0,0.00,0.00000,0.00000
+243,O'Higgins,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),O'Higgins,Aysén del General Carlos Ibáñez del Campo,-48.44280,-72.81957,,,False,0,0.00,0.00000,0.00000
+244,Tortel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tortel,Aysén del General Carlos Ibáñez del Campo,-47.87080,-73.97102,,,False,0,0.00,0.00000,0.00000
+245,Chile Chico,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chile Chico,Aysén del General Carlos Ibáñez del Campo,-46.76130,-72.57370,14207,67.78,True,0,0.00,0.00000,0.00000
+246,Río Ibáñez,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Río Ibáñez,Aysén del General Carlos Ibáñez del Campo,-46.30035,-72.38140,14556,26.22,True,24,7.67,0.03642,0.01164
+247,Punta Arenas,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Punta Arenas,Magallanes y de la Antártica Chilena,-53.30160,-71.34778,20593,30.79,True,14,9.07,0.02124,0.01376
+248,Laguna Blanca,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Laguna Blanca,Magallanes y de la Antártica Chilena,-52.31080,-71.28856,9774,4.94,True,14,10.86,0.02124,0.01648
+249,Río Verde,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Río Verde,Magallanes y de la Antártica Chilena,-53.09275,-72.68591,20679,95.86,True,0,0.00,0.00000,0.00000
+250,San Gregorio,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Gregorio,Magallanes y de la Antártica Chilena,-52.37980,-70.19928,20633,35.39,True,0,0.00,0.00000,0.00000
+251,Cabo de Hornos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cabo de Hornos,Magallanes y de la Antártica Chilena,-55.11255,-67.60675,8350,19.41,True,1,1.00,0.00152,0.00151
+252,Porvenir,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Porvenir,Magallanes y de la Antártica Chilena,-53.37640,-68.97745,20637,92.83,True,1,1.00,0.00152,0.00152
+253,Primavera,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Primavera,Magallanes y de la Antártica Chilena,-52.75465,-69.15805,20641,8.92,True,0,0.00,0.00000,0.00000
+254,Timaukel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Timaukel,Magallanes y de la Antártica Chilena,-54.20120,-69.17456,,,False,0,0.00,0.00000,0.00000
+255,Natales,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Natales,Magallanes y de la Antártica Chilena,-52.35005,-73.13329,2062,81.80,True,14,10.58,0.02124,0.01605
+256,Torres del Paine,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Torres del Paine,Magallanes y de la Antártica Chilena,-51.08215,-72.92456,2702,43.15,True,14,9.19,0.02124,0.01394
+257,Santiago,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Santiago,Metropolitana de Santiago,-33.46040,-70.65332,,,False,0,0.00,0.00000,0.00000
+258,Cerrillos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cerrillos,Metropolitana de Santiago,-33.50585,-70.71739,,,False,0,0.00,0.00000,0.00000
+259,Cerro Navia,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cerro Navia,Metropolitana de Santiago,-33.42630,-70.74338,,,False,0,0.00,0.00000,0.00000
+260,Conchalí,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Conchalí,Metropolitana de Santiago,-33.38350,-70.67486,,,False,0,0.00,0.00000,0.00000
+261,El Bosque,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),El Bosque,Metropolitana de Santiago,-33.56005,-70.67631,,,False,0,0.00,0.00000,0.00000
+262,Estación Central,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Estación Central,Metropolitana de Santiago,-33.46325,-70.70520,,,False,0,0.00,0.00000,0.00000
+263,Huechuraba,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Huechuraba,Metropolitana de Santiago,-33.36670,-70.64116,,,False,0,0.00,0.00000,0.00000
+264,Independencia,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Independencia,Metropolitana de Santiago,-33.41190,-70.66636,,,False,0,0.00,0.00000,0.00000
+265,La Cisterna,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Cisterna,Metropolitana de Santiago,-33.52825,-70.66378,,,False,0,0.00,0.00000,0.00000
+266,La Florida,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Florida,Metropolitana de Santiago,-33.53355,-70.54486,,,False,0,0.00,0.00000,0.00000
+267,La Granja,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Granja,Metropolitana de Santiago,-33.53635,-70.62208,,,False,0,0.00,0.00000,0.00000
+268,La Pintana,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Pintana,Metropolitana de Santiago,-33.59275,-70.63703,21489,0.99,True,0,0.00,0.00000,0.00000
+269,La Reina,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Reina,Metropolitana de Santiago,-33.44855,-70.53337,,,False,0,0.00,0.00000,0.00000
+270,Las Condes,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Las Condes,Metropolitana de Santiago,-33.42555,-70.51572,,,False,0,0.00,0.00000,0.00000
+271,Lo Barnechea,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lo Barnechea,Metropolitana de Santiago,-33.29500,-70.39051,,,False,0,0.00,0.00000,0.00000
+272,Lo Espejo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lo Espejo,Metropolitana de Santiago,-33.51710,-70.68833,,,False,0,0.00,0.00000,0.00000
+273,Lo Prado,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lo Prado,Metropolitana de Santiago,-33.44610,-70.72312,,,False,0,0.00,0.00000,0.00000
+274,Macul,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Macul,Metropolitana de Santiago,-33.49470,-70.60039,,,False,0,0.00,0.00000,0.00000
+275,Maipú,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Maipú,Metropolitana de Santiago,-33.51590,-70.80988,,,False,0,0.00,0.00000,0.00000
+276,Ñuñoa,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ñuñoa,Metropolitana de Santiago,-33.46040,-70.60086,,,False,0,0.00,0.00000,0.00000
+277,Pedro Aguirre Cerda,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pedro Aguirre Cerda,Metropolitana de Santiago,-33.48975,-70.67552,,,False,0,0.00,0.00000,0.00000
+278,Peñalolén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Peñalolén,Metropolitana de Santiago,-33.48530,-70.51142,,,False,0,0.00,0.00000,0.00000
+279,Providencia,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Providencia,Metropolitana de Santiago,-33.42610,-70.61288,,,False,0,0.00,0.00000,0.00000
+280,Pudahuel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pudahuel,Metropolitana de Santiago,-33.42035,-70.86276,,,False,0,0.00,0.00000,0.00000
+281,Quilicura,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quilicura,Metropolitana de Santiago,-33.35955,-70.74134,4971,3.86,True,106,19.98,0.16085,0.03033
+282,Quinta Normal,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quinta Normal,Metropolitana de Santiago,-33.43215,-70.70025,,,False,0,0.00,0.00000,0.00000
+283,Recoleta,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Recoleta,Metropolitana de Santiago,-33.40605,-70.63262,,,False,0,0.00,0.00000,0.00000
+284,Renca,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Renca,Metropolitana de Santiago,-33.39955,-70.72920,,,False,0,0.00,0.00000,0.00000
+285,San Joaquín,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Joaquín,Metropolitana de Santiago,-33.49780,-70.62776,,,False,0,0.00,0.00000,0.00000
+286,San Miguel,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Miguel,Metropolitana de Santiago,-33.49365,-70.65139,,,False,0,0.00,0.00000,0.00000
+287,San Ramón,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Ramón,Metropolitana de Santiago,-33.53685,-70.64200,,,False,0,0.00,0.00000,0.00000
+288,Vitacura,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Vitacura,Metropolitana de Santiago,-33.38035,-70.56600,,,False,0,0.00,0.00000,0.00000
+289,Puente Alto,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Puente Alto,Metropolitana de Santiago,-33.59655,-70.55111,21483,0.49,True,4,2.93,0.00607,0.00444
+290,Pirque,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pirque,Metropolitana de Santiago,-33.72025,-70.51112,21247,11.01,True,0,0.00,0.00000,0.00000
+291,San José de Maipo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San José de Maipo,Metropolitana de Santiago,-33.67205,-70.15648,21393,16.77,True,4,1.93,0.00607,0.00292
+292,Colina,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Colina,Metropolitana de Santiago,-33.13720,-70.59259,3424,5.71,True,0,0.00,0.00000,0.00000
+293,Lampa,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lampa,Metropolitana de Santiago,-33.27540,-70.85865,8309,0.61,True,106,15.16,0.16085,0.02300
+294,Tiltil,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Tiltil,Metropolitana de Santiago,-33.07580,-70.88530,227,1.78,True,106,16.33,0.16085,0.02479
+295,San Bernardo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Bernardo,Metropolitana de Santiago,-33.63900,-70.68574,21504,2.48,True,19,8.90,0.02883,0.01350
+296,Buin,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Buin,Metropolitana de Santiago,-33.74060,-70.71891,22579,1.60,True,19,9.62,0.02883,0.01459
+297,Calera de Tango,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Calera de Tango,Metropolitana de Santiago,-33.61680,-70.78901,20891,0.79,True,19,8.35,0.02883,0.01267
+298,Paine,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Paine,Metropolitana de Santiago,-33.86265,-70.73983,19796,0.33,True,19,10.35,0.02883,0.01571
+299,Melipilla,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Melipilla,Metropolitana de Santiago,-33.74970,-71.22381,2974,0.75,True,8,3.96,0.01214,0.00601
+300,Alhué,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Alhué,Metropolitana de Santiago,-34.03645,-71.08382,,,False,0,0.00,0.00000,0.00000
+301,Curacaví,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Curacaví,Metropolitana de Santiago,-33.37955,-71.10094,20668,3.66,True,8,1.90,0.01214,0.00288
+302,María Pinto,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),María Pinto,Metropolitana de Santiago,-33.49730,-71.20395,11993,3.85,True,8,2.65,0.01214,0.00402
+303,San Pedro,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Pedro,Metropolitana de Santiago,-33.92330,-71.47119,13569,0.68,True,8,2.40,0.01214,0.00365
+304,Talagante,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Talagante,Metropolitana de Santiago,-33.67985,-70.88478,3907,3.15,True,19,8.10,0.02883,0.01230
+305,El Monte,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),El Monte,Metropolitana de Santiago,-33.66610,-71.02289,4454,2.26,True,8,3.42,0.01214,0.00519
+306,Isla de Maipo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Isla de Maipo,Metropolitana de Santiago,-33.74905,-70.95773,7430,5.03,True,19,8.21,0.02883,0.01246
+307,Padre Hurtado,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Padre Hurtado,Metropolitana de Santiago,-33.55080,-70.86949,5719,0.84,True,1,0.97,0.00152,0.00147
+308,Peñaflor,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Peñaflor,Metropolitana de Santiago,-33.61120,-70.89027,3217,0.13,True,8,2.84,0.01214,0.00431
+309,Valdivia,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Valdivia,Los Ríos,-39.83445,-73.18507,2237,1.86,True,33,11.40,0.05008,0.01729
+310,Corral,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Corral,Los Ríos,-39.98270,-73.39061,20144,10.48,True,0,0.00,0.00000,0.00000
+311,Lanco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lanco,Los Ríos,-39.52540,-72.57036,2610,1.70,True,33,5.16,0.05008,0.00783
+312,Los Lagos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Los Lagos,Los Ríos,-39.84985,-72.61951,20235,15.69,True,33,7.64,0.05008,0.01159
+313,Máfil,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Máfil,Los Ríos,-39.70535,-72.85391,9246,5.50,True,33,8.62,0.05008,0.01307
+314,Mariquina,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Mariquina,Los Ríos,-39.50490,-73.04675,7652,8.53,True,33,9.70,0.05008,0.01472
+315,Paillaco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Paillaco,Los Ríos,-40.06265,-72.87382,2242,0.89,True,33,10.17,0.05008,0.01543
+316,Panguipulli,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Panguipulli,Los Ríos,-39.76715,-72.07065,7799,22.15,True,33,2.75,0.05008,0.00418
+317,La Unión,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),La Unión,Los Ríos,-40.17035,-73.30316,7165,23.11,True,33,8.62,0.05008,0.01309
+318,Futrono,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Futrono,Los Ríos,-40.12105,-72.17923,20264,17.19,True,0,0.00,0.00000,0.00000
+319,Lago Ranco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Lago Ranco,Los Ríos,-40.38575,-72.09148,20266,32.67,True,0,0.00,0.00000,0.00000
+320,Río Bueno,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Río Bueno,Los Ríos,-40.46655,-72.60570,8680,32.93,True,33,8.74,0.05008,0.01326
+321,Arica,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Arica,Arica y Parinacota,-18.47525,-69.99196,18278,11.83,True,5,4.54,0.00759,0.00689
+322,Camarones,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Camarones,Arica y Parinacota,-18.96090,-69.71779,15366,35.26,True,0,0.00,0.00000,0.00000
+323,Putre,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Putre,Arica y Parinacota,-18.49460,-69.33950,21038,25.43,True,5,4.61,0.00759,0.00700
+324,General Lagos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),General Lagos,Arica y Parinacota,-17.83555,-69.55347,,,False,0,0.00,0.00000,0.00000
+325,Chillán,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chillán,Ñuble,-36.62930,-72.04604,17661,1.45,True,68,2.94,0.10319,0.00446
+326,Bulnes,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Bulnes,Ñuble,-36.79440,-72.28928,17867,4.51,True,68,3.39,0.10319,0.00514
+327,Chillán Viejo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Chillán Viejo,Ñuble,-36.68460,-72.21470,6251,3.14,True,68,3.40,0.10319,0.00516
+328,El Carmen,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),El Carmen,Ñuble,-36.91960,-71.87931,19574,13.18,True,68,2.61,0.10319,0.00396
+329,Pemuco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pemuco,Ñuble,-36.96550,-72.18919,9984,7.89,True,68,2.90,0.10319,0.00440
+330,Pinto,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Pinto,Ñuble,-36.88780,-71.49296,17716,1.75,True,1,0.91,0.00152,0.00138
+331,Quillón,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quillón,Ñuble,-36.81015,-72.50523,2486,6.65,True,68,0.95,0.10319,0.00144
+332,San Ignacio,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Ignacio,Ñuble,-36.81595,-72.01285,17804,1.07,True,68,0.19,0.10319,0.00028
+333,Yungay,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Yungay,Ñuble,-37.09805,-71.90689,19583,8.92,True,68,2.55,0.10319,0.00387
+334,Quirihue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Quirihue,Ñuble,-36.24650,-72.54417,4651,0.39,True,62,0.18,0.09408,0.00027
+335,Cobquecura,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Cobquecura,Ñuble,-36.18365,-72.73770,,,False,0,0.00,0.00000,0.00000
+336,Coelemu,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coelemu,Ñuble,-36.50360,-72.73749,9638,1.33,True,62,0.44,0.09408,0.00066
+337,Ninhue,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ninhue,Ñuble,-36.35180,-72.39070,19504,4.67,True,0,0.00,0.00000,0.00000
+338,Portezuelo,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Portezuelo,Ñuble,-36.53825,-72.48848,,,False,0,0.00,0.00000,0.00000
+339,Ranquil,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ranquil,Ñuble,-36.63850,-72.60355,,,False,0,0.00,0.00000,0.00000
+340,Treguaco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Treguaco,Ñuble,-36.43190,-72.61716,6824,2.72,True,62,0.40,0.09408,0.00060
+341,San Carlos,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Carlos,Ñuble,-36.37770,-72.01907,19486,7.57,True,62,1.32,0.09408,0.00200
+342,Coihueco,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Coihueco,Ñuble,-36.72855,-71.54917,17607,24.65,True,68,0.91,0.10319,0.00137
+343,Ñiquén,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),Ñiquén,Ñuble,-36.28350,-71.94805,1772,10.74,True,62,2.18,0.09408,0.00331
+344,San Fabián,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Fabián,Ñuble,-36.65415,-71.19007,19496,33.96,True,0,0.00,0.00000,0.00000
+345,San Nicolás,recibe,comuna,DPA_COMUNAS_2023 (SENAPRED/ArcGIS Online),San Nicolás,Ñuble,-36.48755,-72.20945,19501,1.71,True,68,0.99,0.10319,0.00150
+346,IXP Chile IX by PIT.net / PIT Santiago - PIT Chile / PIT entel / ixFabric - Santiago,intercambia,IXP,"PeeringDB (ix, CL); posicion = punto de la comuna de la ciudad",Santiago,Metropolitana de Santiago,-33.46040,-70.65332,4971,11.34,True,106,19.98,0.16085,0.03033
+347,IXP PIT Concepcion - PIT Chile,intercambia,IXP,"PeeringDB (ix, CL); posicion = punto de la comuna de la ciudad",Concepción,Biobío,-36.84890,-72.96010,9993,3.37,True,68,3.71,0.10319,0.00564
+348,IXP PIT Temuco - PIT Chile,intercambia,IXP,"PeeringDB (ix, CL); posicion = punto de la comuna de la ciudad",Temuco,La Araucanía,-38.66495,-72.62847,7578,4.33,True,8,4.87,0.01214,0.00739
+349,IXP ixFabric - Valdivia,intercambia,IXP,"PeeringDB (ix, CL); posicion = punto de la comuna de la ciudad",Valdivia,Los Ríos,-39.83445,-73.18507,2237,1.86,True,33,11.40,0.05008,0.01729
+350,IXP PatagoniaIX,intercambia,IXP,"PeeringDB (ix, CL); posicion = punto de la comuna de la ciudad",Punta Arenas,Magallanes y de la Antártica Chilena,-53.30160,-71.34778,20593,30.79,False,0,0.00,0.00000,0.00000
+351,IXP MetroPort IX,intercambia,IXP,"PeeringDB (ix, CL); posicion = punto de la comuna de la ciudad",Viña del Mar,Valparaíso,-33.02420,-71.52273,5268,7.02,True,8,5.78,0.01214,0.00877
+352,Puerto Chacabuco,intercambia,amarre de cable submarino,submarinecablemap.com,Aisén,Aysén del General Carlos Ibáñez del Campo,-45.45830,-72.80510,14190,0.17,True,24,7.99,0.03642,0.01212
+353,Quellon,intercambia,amarre de cable submarino,submarinecablemap.com,Quellón,Los Lagos,-43.11747,-73.47946,20446,10.19,True,15,5.91,0.02276,0.00897
+354,Valparaíso,intercambia,amarre de cable submarino,submarinecablemap.com,Valparaíso,Valparaíso,-33.04577,-71.62048,6465,0.12,True,8,5.26,0.01214,0.00797
+355,Puerto Montt,intercambia,amarre de cable submarino,submarinecablemap.com,Puerto Montt,Los Lagos,-41.46037,-72.95341,4717,1.14,True,23,11.07,0.03490,0.01680
+356,Punta Arenas,intercambia,amarre de cable submarino,submarinecablemap.com,Punta Arenas,Magallanes y de la Antártica Chilena,-53.16666,-70.93333,20596,1.10,True,14,9.10,0.02124,0.01381
+357,Puerto Williams,intercambia,amarre de cable submarino,submarinecablemap.com,Cabo de Hornos,Magallanes y de la Antártica Chilena,-54.93520,-67.60586,20601,0.01,True,1,1.00,0.00152,0.00151
+358,Tortel,intercambia,amarre de cable submarino,submarinecablemap.com,Tortel,Aysén del General Carlos Ibáñez del Campo,-47.80121,-73.53689,14544,93.70,False,0,0.00,0.00000,0.00000
+359,Arica,intercambia,amarre de cable submarino,submarinecablemap.com,Arica,Arica y Parinacota,-18.47337,-70.30675,8852,0.29,True,1,1.00,0.00152,0.00151
+360,Linao,intercambia,amarre de cable submarino,submarinecablemap.com,Quemchi,Los Lagos,-41.99113,-73.50446,839,17.13,True,15,9.45,0.02276,0.01434
+361,Meimen,intercambia,amarre de cable submarino,submarinecablemap.com,Calbuco,Los Lagos,-41.80692,-73.15529,20334,4.59,True,23,6.50,0.03490,0.00986
+362,Iquique,intercambia,amarre de cable submarino,submarinecablemap.com,Iquique,Tarapacá,-20.21670,-70.14222,1454,1.06,True,2,1.87,0.00303,0.00283
+363,Antofagasta,intercambia,amarre de cable submarino,submarinecablemap.com,Antofagasta,Antofagasta,-23.65000,-70.40000,1839,0.25,True,23,14.06,0.03490,0.02134
+364,La Serena,intercambia,amarre de cable submarino,submarinecablemap.com,La Serena,Coquimbo,-29.90630,-71.25020,18552,0.28,True,106,11.07,0.16085,0.01680
+365,Tocopilla,intercambia,amarre de cable submarino,submarinecablemap.com,Tocopilla,Antofagasta,-22.08838,-70.19766,18318,0.72,True,1,1.00,0.00152,0.00152
+366,Puerto Saavedra,intercambia,amarre de cable submarino,submarinecablemap.com,Saavedra,La Araucanía,-38.78713,-73.39677,20133,0.40,True,1,1.00,0.00152,0.00152
+367,Caldera,intercambia,amarre de cable submarino,submarinecablemap.com,Caldera,Atacama,-27.06199,-70.81236,18453,1.17,True,1,0.96,0.00152,0.00146
+368,Constitución,intercambia,amarre de cable submarino,submarinecablemap.com,Constitución,Maule,-35.31837,-72.41607,6781,1.54,True,62,2.45,0.09408,0.00371
+369,Cartagena,intercambia,amarre de cable submarino,submarinecablemap.com,Cartagena,Valparaíso,-33.54688,-71.60009,19010,0.10,True,3,2.38,0.00455,0.00361
+370,San Pedro de la Paz,intercambia,amarre de cable submarino,submarinecablemap.com,San Pedro de la Paz,Biobío,-36.83168,-73.10897,6915,0.73,True,3,1.02,0.00455,0.00154
+371,Adexus Santiago - CLink Extension,genera,centro de datos,"PeeringDB (fac, CL)",Huechuraba,Metropolitana de Santiago,-33.35799,-70.67626,4971,2.44,True,106,19.98,0.16085,0.03033
+372,Internexa Santiago de Chile,genera,centro de datos,"PeeringDB (fac, CL)",Providencia,Metropolitana de Santiago,-33.43200,-70.60200,4971,11.72,True,106,19.98,0.16085,0.03033
+373,Bynarya,genera,centro de datos,"PeeringDB (fac, CL)",Las Condes,Metropolitana de Santiago,-33.41842,-70.59957,4971,11.04,True,106,19.98,0.16085,0.03033
+374,DC Porvenir,genera,centro de datos,"PeeringDB (fac, CL)",Santiago,Metropolitana de Santiago,-33.45499,-70.63289,4971,11.69,True,106,19.98,0.16085,0.03033
+375,CMET,genera,centro de datos,"PeeringDB (fac, CL)",La Florida,Metropolitana de Santiago,-33.52273,-70.58730,21486,8.08,True,4,2.92,0.00607,0.00443
+376,Netglobalis,genera,centro de datos,"PeeringDB (fac, CL)",Huechuraba,Metropolitana de Santiago,-33.38725,-70.61649,4971,8.17,True,106,19.98,0.16085,0.03033
+377,Grupo ZGH - La Florida,genera,centro de datos,"PeeringDB (fac, CL)",La Florida,Metropolitana de Santiago,-33.55901,-70.57492,21486,4.04,True,4,2.92,0.00607,0.00443
+378,Equinix ST1/ST2 - Santiago,genera,centro de datos,"PeeringDB (fac, CL)",Pudahuel,Metropolitana de Santiago,-33.44802,-70.84832,5723,10.93,True,1,0.97,0.00152,0.00147
+379,Adexus Santiago,genera,centro de datos,"PeeringDB (fac, CL)",Santiago,Metropolitana de Santiago,-33.43825,-70.64537,4971,9.50,True,106,19.98,0.16085,0.03033
+380,Ascenty SCL01 - Santiago,genera,centro de datos,"PeeringDB (fac, CL)",Quilicura,Metropolitana de Santiago,-33.33854,-70.70621,4971,3.11,True,106,19.98,0.16085,0.03033
+381,Telxius Valparaiso DC,genera,centro de datos,"PeeringDB (fac, CL); sin coordenadas: punto de la comuna",Valparaíso,Valparaíso,-33.11560,-71.60822,5279,4.49,True,8,5.78,0.01214,0.00877
+382,Telxius Arica DC,genera,centro de datos,"PeeringDB (fac, CL); sin coordenadas: punto de la comuna",Arica,Arica y Parinacota,-18.47525,-69.99196,18278,11.83,True,5,4.54,0.00759,0.00689
+383,ihosting Servicios Internet,genera,centro de datos,"PeeringDB (fac, CL)",Viña del Mar,Valparaíso,-33.01996,-71.54380,6455,5.39,True,8,5.70,0.01214,0.00865
+384,SONDA - Kudos,genera,centro de datos,"PeeringDB (fac, CL)",Quilicura,Metropolitana de Santiago,-33.35663,-70.69889,4971,1.07,True,106,19.98,0.16085,0.03033
+385,DataCenter Siptelchile,genera,centro de datos,"PeeringDB (fac, CL)",Las Condes,Metropolitana de Santiago,-33.40735,-70.57004,4971,12.98,True,106,19.98,0.16085,0.03033
+386,EdgeConneX Santiago (EDCSCL01),genera,centro de datos,"PeeringDB (fac, CL)",Colina,Metropolitana de Santiago,-33.29740,-70.70160,2944,2.66,True,106,19.40,0.16085,0.02944
+387,METROWAN TELECOM Santiago,genera,centro de datos,"PeeringDB (fac, CL); sin coordenadas: punto de la comuna",Santiago,Metropolitana de Santiago,-33.46040,-70.65332,4971,11.34,True,106,19.98,0.16085,0.03033
+388,Equinix ST4 - Santiago,genera,centro de datos,"PeeringDB (fac, CL)",San Vicente,Libertador General Bernardo O'Higgins,-34.42902,-71.08370,4002,0.49,True,20,10.04,0.03035,0.01523
+389,GTD Chile - Panamericana,genera,centro de datos,"PeeringDB (fac, CL)",Conchalí,Metropolitana de Santiago,-33.38796,-70.68911,4971,2.64,True,106,19.98,0.16085,0.03033
+390,ODATA DC ST01,genera,centro de datos,"PeeringDB (fac, CL); sin coordenadas: punto de la comuna",Lampa,Metropolitana de Santiago,-33.27540,-70.85865,8309,0.61,True,106,15.16,0.16085,0.02300
+391,Grupo ZGH - Colina,genera,centro de datos,"PeeringDB (fac, CL)",Colina,Metropolitana de Santiago,-33.24134,-70.73448,2943,3.64,True,106,19.29,0.16085,0.02926
+392,Opciones - Concepción,genera,centro de datos,"PeeringDB (fac, CL)",Concepción,Biobío,-36.81577,-73.04843,7314,1.26,True,68,4.63,0.10319,0.00702
+393,Opciones - Puerto Montt,genera,centro de datos,"PeeringDB (fac, CL)",Puerto Montt,Los Lagos,-41.46759,-72.94029,7224,0.47,True,23,11.02,0.03490,0.01673
+394,Silica Networks - Data Center Nubicua (OSO01),genera,centro de datos,"PeeringDB (fac, CL)",Osorno,Los Lagos,-40.59139,-72.95298,656,0.90,True,23,8.01,0.03490,0.01215
+395,Scala Data Centers SSCLCR01,genera,centro de datos,"PeeringDB (fac, CL)",Valparaíso,Valparaíso,-33.13578,-71.55844,5280,0.53,True,8,5.58,0.01214,0.00846
+396,San Esteban SDC1,genera,centro de datos,"PeeringDB (fac, CL); sin coordenadas: punto de la comuna",San Esteban,Valparaíso,-32.67100,-70.35862,5435,21.92,False,0,0.00,0.00000,0.00000
+397,ANACONDAWEB S.A.,genera,centro de datos,"PeeringDB (fac, CL)",Temuco,La Araucanía,-38.74267,-72.59604,3842,0.59,True,8,4.98,0.01214,0.00756
+398,TECNOERA LONDRES ZONA 1,genera,centro de datos,"PeeringDB (fac, CL)",Viña del Mar,Valparaíso,-33.02924,-71.56745,6457,3.11,True,8,5.66,0.01214,0.00858
+399,Apoapsis - Ojo Bueno,genera,centro de datos,"PeeringDB (fac, CL)",Punta Arenas,Magallanes y de la Antártica Chilena,-53.04668,-70.87293,9724,1.28,True,14,9.37,0.02124,0.01422
+400,Troncal v2,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.64637,-70.39801,2,0.00,True,23,14.06,0.03490,0.02134
+401,Troncal v7,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Panquehue,Valparaíso,-32.75642,-70.73777,7,0.00,True,106,16.51,0.16085,0.02505
+402,Troncal v8,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Felipe,Valparaíso,-32.75757,-70.73697,8,0.00,True,106,16.50,0.16085,0.02504
+403,Troncal v9,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Llanquihue,Los Lagos,-41.29078,-73.00856,9,0.00,True,23,11.69,0.03490,0.01775
+404,Troncal v16,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Llanquihue,Los Lagos,-41.25520,-73.02234,16,0.00,True,23,11.66,0.03490,0.01769
+405,Troncal v33,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villa Alegre,Maule,-35.62594,-71.74887,33,0.00,True,62,7.13,0.09408,0.01082
+406,Troncal v38,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villa Alemana,Valparaíso,-33.05240,-71.33319,38,0.00,True,106,7.17,0.16085,0.01087
+407,Troncal v49,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Quilpué,Valparaíso,-33.06451,-71.42021,49,0.00,True,106,6.57,0.16085,0.00997
+408,Troncal v52,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Pedro,Metropolitana de Santiago,-33.90917,-71.41431,52,0.00,True,8,2.69,0.01214,0.00408
+409,Troncal v62,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Negrete,Biobío,-37.56029,-72.59146,62,0.00,True,68,4.82,0.10319,0.00732
+410,Troncal v63,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Negrete,Biobío,-37.56105,-72.59467,63,0.00,True,68,4.80,0.10319,0.00728
+411,Troncal v64,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cabrero,Biobío,-37.08304,-72.43866,64,0.00,True,68,3.55,0.10319,0.00539
+412,Troncal v68,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cabrero,Biobío,-37.04052,-72.40178,68,0.00,True,68,4.49,0.10319,0.00681
+413,Troncal v69,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),María Elena,Antofagasta,-22.27843,-69.56417,69,0.00,True,23,12.66,0.03490,0.01921
+414,Troncal v70,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),María Elena,Antofagasta,-22.27938,-69.59563,70,0.00,True,23,12.75,0.03490,0.01934
+415,Troncal v75,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Frutillar,Los Lagos,-41.11541,-73.06401,75,0.00,True,23,11.20,0.03490,0.01700
+416,Troncal v87,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Penco,Biobío,-36.74133,-72.98784,87,0.00,True,62,0.39,0.09408,0.00059
+417,Troncal v94,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Codegua,Libertador General Bernardo O'Higgins,-34.07991,-70.68230,94,0.00,True,19,9.23,0.02883,0.01401
+418,Troncal v105,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villarrica,La Araucanía,-39.27452,-72.28403,105,0.00,True,33,6.35,0.05008,0.00963
+419,Troncal v114,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Curanilahue,Biobío,-37.44356,-73.35591,114,0.00,True,10,2.66,0.01517,0.00404
+420,Troncal v118,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cañete,Biobío,-37.78268,-73.38489,118,0.00,True,10,3.29,0.01517,0.00499
+421,Troncal v121,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cañete,Biobío,-37.79770,-73.39409,121,0.00,True,10,3.25,0.01517,0.00493
+422,Troncal v140,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Peñaflor,Metropolitana de Santiago,-33.61072,-70.90496,140,0.00,True,8,2.93,0.01214,0.00445
+423,Troncal v155,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Melipilla,Metropolitana de Santiago,-33.71642,-71.21081,155,0.00,True,8,4.14,0.01214,0.00627
+424,Troncal v158,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Osorno,Los Lagos,-40.56160,-73.09815,158,0.00,True,23,9.64,0.03490,0.01463
+425,Troncal v159,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Osorno,Los Lagos,-40.58167,-73.09799,159,0.00,True,23,9.70,0.03490,0.01472
+426,Troncal v163,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Llaillay,Valparaíso,-32.84438,-70.98492,163,0.00,True,106,19.61,0.16085,0.02975
+427,Troncal v170,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Angeles,Biobío,-37.48438,-72.40468,170,0.00,True,68,6.00,0.10319,0.00910
+428,Troncal v174,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Angeles,Biobío,-37.48026,-72.46097,174,0.00,True,68,5.77,0.10319,0.00876
+429,Troncal v178,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Angeles,Biobío,-37.39446,-72.62136,178,0.00,True,68,3.57,0.10319,0.00542
+430,Troncal v192,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Concepción,Biobío,-36.81089,-73.02739,192,0.00,True,68,4.35,0.10319,0.00660
+431,Troncal v221,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Concepción,Biobío,-36.83088,-72.92183,221,0.00,True,68,3.75,0.10319,0.00569
+432,Troncal v223,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Tiltil,Metropolitana de Santiago,-33.12011,-70.82431,223,0.00,True,106,16.70,0.16085,0.02535
+433,Troncal v231,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Tiltil,Metropolitana de Santiago,-32.94805,-70.81786,231,0.00,True,106,16.54,0.16085,0.02510
+434,Troncal v245,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Ligua,Valparaíso,-32.48872,-71.25857,245,0.00,True,106,17.72,0.16085,0.02689
+435,Troncal v251,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Ligua,Valparaíso,-32.44470,-71.32151,251,0.00,True,106,17.61,0.16085,0.02673
+436,Troncal v256,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Ligua,Valparaíso,-32.27986,-71.46616,256,0.00,True,106,13.30,0.16085,0.02018
+437,Troncal v260,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Ligua,Valparaíso,-32.23539,-71.50020,260,0.00,True,106,12.59,0.16085,0.01911
+438,Troncal v276,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Vilos,Coquimbo,-32.15245,-71.51144,276,0.00,True,106,11.36,0.16085,0.01723
+439,Troncal v281,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Vilos,Coquimbo,-32.13022,-71.50036,281,0.00,True,106,11.33,0.16085,0.01720
+440,Troncal v282,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ovalle,Coquimbo,-30.73004,-71.24216,282,0.00,True,106,7.36,0.16085,0.01117
+441,Troncal v300,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Diego de Almagro,Atacama,-26.37767,-70.02417,300,0.00,True,7,4.21,0.01062,0.00639
+442,Troncal v304,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Puerto Varas,Los Lagos,-41.31801,-73.00945,304,0.00,True,23,11.68,0.03490,0.01773
+443,Troncal v327,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Constitución,Maule,-35.36666,-72.40047,327,0.00,True,62,2.38,0.09408,0.00361
+444,Troncal v361,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Rauco,Maule,-34.86834,-71.26460,361,0.00,True,62,0.85,0.09408,0.00128
+445,Troncal v364,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Calama,Antofagasta,-22.32882,-68.92742,364,0.00,True,23,10.67,0.03490,0.01619
+446,Troncal v366,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Huara,Tarapacá,-19.81664,-69.83215,366,0.00,True,3,2.90,0.00455,0.00440
+447,Troncal v367,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Huara,Tarapacá,-19.79118,-69.84836,367,0.00,True,3,2.90,0.00455,0.00440
+448,Troncal v371,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Huara,Tarapacá,-19.65101,-69.93683,371,0.00,True,3,2.79,0.00455,0.00424
+449,Troncal v377,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),María Elena,Antofagasta,-22.27835,-69.27490,377,0.00,True,23,11.76,0.03490,0.01784
+450,Troncal v385,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-24.25397,-69.13467,385,0.00,True,23,8.54,0.03490,0.01296
+451,Troncal v407,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),María Elena,Antofagasta,-21.91324,-69.55843,407,0.00,True,23,11.33,0.03490,0.01719
+452,Troncal v413,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vicuña,Coquimbo,-30.21931,-70.65009,413,0.00,True,106,9.93,0.16085,0.01506
+453,Troncal v422,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Talca,Maule,-35.44524,-71.64250,422,0.00,True,62,7.65,0.09408,0.01162
+454,Troncal v426,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Javier,Maule,-35.57052,-71.69879,426,0.00,True,62,8.82,0.09408,0.01338
+455,Troncal v428,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Javier,Maule,-35.57632,-71.70472,428,0.00,True,62,8.71,0.09408,0.01322
+456,Troncal v431,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Río Hurtado,Coquimbo,-30.32657,-70.73603,431,0.00,True,106,9.36,0.16085,0.01420
+457,Troncal v553,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ovalle,Coquimbo,-30.55191,-71.16650,553,0.00,True,106,7.96,0.16085,0.01208
+458,Troncal v562,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chillán,Ñuble,-36.60808,-72.14886,562,0.00,True,68,4.65,0.10319,0.00706
+459,Troncal v575,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chillán,Ñuble,-36.57638,-72.10442,575,0.00,True,68,3.45,0.10319,0.00524
+460,Troncal v586,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Copiapó,Atacama,-27.41890,-70.27402,586,0.00,True,7,4.22,0.01062,0.00640
+461,Troncal v588,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Peralillo,Libertador General Bernardo O'Higgins,-34.47801,-71.48569,588,0.00,True,9,2.14,0.01366,0.00324
+462,Troncal v590,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ovalle,Coquimbo,-30.59763,-71.18656,590,0.00,True,106,7.80,0.16085,0.01184
+463,Troncal v591,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ovalle,Coquimbo,-30.60309,-71.20298,591,0.00,True,106,7.95,0.16085,0.01207
+464,Troncal v595,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Hijuelas,Valparaíso,-32.78821,-71.16851,595,0.00,True,106,18.30,0.16085,0.02776
+465,Troncal v604,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Nogales,Valparaíso,-32.73047,-71.20132,604,0.00,True,106,17.61,0.16085,0.02672
+466,Troncal v606,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Rancagua,Libertador General Bernardo O'Higgins,-34.18803,-70.71662,606,0.00,True,19,6.85,0.02883,0.01039
+467,Troncal v609,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Rancagua,Libertador General Bernardo O'Higgins,-34.17039,-70.74063,609,0.00,True,19,7.29,0.02883,0.01106
+468,Troncal v610,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Pichidegua,Libertador General Bernardo O'Higgins,-34.38177,-71.24469,610,0.00,True,20,9.05,0.03035,0.01373
+469,Troncal v631,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Talca,Maule,-35.42649,-71.66605,631,0.00,True,62,7.46,0.09408,0.01131
+470,Troncal v634,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Maule,Maule,-35.52146,-71.67759,634,0.00,True,62,8.76,0.09408,0.01329
+471,Troncal v640,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Maule,Maule,-35.54825,-71.69689,640,0.00,True,62,8.82,0.09408,0.01338
+472,Troncal v644,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villa Alegre,Maule,-35.69521,-71.68586,644,0.00,True,62,7.17,0.09408,0.01088
+473,Troncal v646,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Osorno,Los Lagos,-40.57373,-73.13589,646,0.00,True,23,9.64,0.03490,0.01463
+474,Troncal v663,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Hualpén,Biobío,-36.78669,-73.11023,663,0.00,True,68,3.87,0.10319,0.00588
+475,Troncal v666,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Río Negro,Los Lagos,-40.81092,-73.16790,666,0.00,True,23,10.34,0.03490,0.01569
+476,Troncal v672,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Angeles,Biobío,-37.47076,-72.35172,672,0.00,True,68,5.29,0.10319,0.00803
+477,Troncal v677,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Angeles,Biobío,-37.48727,-72.34313,677,0.00,True,68,4.87,0.10319,0.00740
+478,Troncal v685,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villarrica,La Araucanía,-39.47325,-72.16885,685,0.00,True,33,4.13,0.05008,0.00626
+479,Troncal v693,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Javier,Maule,-35.55643,-72.11013,693,0.00,True,62,1.54,0.09408,0.00234
+480,Troncal v719,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Javier,Maule,-35.79875,-72.00569,719,0.00,True,62,0.26,0.09408,0.00039
+481,Troncal v734,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cauquenes,Maule,-35.96597,-72.22476,734,0.00,True,62,1.22,0.09408,0.00185
+482,Troncal v744,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Valdivia,Los Ríos,-39.83364,-73.21531,744,0.00,True,33,11.41,0.05008,0.01731
+483,Troncal v821,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ancud,Los Lagos,-41.87851,-73.79631,821,0.00,True,15,6.80,0.02276,0.01032
+484,Troncal v832,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Quemchi,Los Lagos,-42.15238,-73.49395,832,0.00,True,15,9.55,0.02276,0.01449
+485,Troncal v845,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chonchi,Los Lagos,-42.72186,-73.78908,845,0.00,True,15,8.95,0.02276,0.01358
+486,Troncal v861,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Dalcahue,Los Lagos,-42.36197,-73.71956,861,0.00,True,15,10.10,0.02276,0.01533
+487,Troncal v871,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vilcún,La Araucanía,-38.68423,-72.34164,871,0.00,True,1,0.71,0.00152,0.00107
+488,Troncal v875,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Laguna Blanca,Magallanes y de la Antártica Chilena,-52.62637,-71.14189,875,0.00,True,14,10.23,0.02124,0.01552
+489,Troncal v888,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Laguna Blanca,Magallanes y de la Antártica Chilena,-52.37196,-71.41651,888,0.00,True,14,10.74,0.02124,0.01629
+490,Troncal v899,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Laguna Blanca,Magallanes y de la Antártica Chilena,-52.05078,-71.60107,899,0.00,True,14,11.12,0.02124,0.01688
+491,Troncal v907,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Laguna Blanca,Magallanes y de la Antártica Chilena,-52.03617,-71.67275,907,0.00,True,14,11.15,0.02124,0.01691
+492,Troncal v920,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Natales,Magallanes y de la Antártica Chilena,-52.02852,-71.82399,920,0.00,True,14,11.14,0.02124,0.01691
+493,Troncal v943,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Natales,Magallanes y de la Antártica Chilena,-51.84961,-72.12526,943,0.00,True,14,10.97,0.02124,0.01664
+494,Troncal v950,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Natales,Magallanes y de la Antártica Chilena,-51.76081,-72.22625,950,0.00,True,14,10.84,0.02124,0.01645
+495,Troncal v962,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Vilos,Coquimbo,-32.14103,-71.51618,962,0.00,True,106,11.35,0.16085,0.01722
+496,Troncal v966,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Canela,Coquimbo,-31.44605,-71.56486,966,0.00,True,106,5.89,0.16085,0.00894
+497,Troncal v999,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Canela,Coquimbo,-31.40543,-71.45946,999,0.00,True,106,5.10,0.16085,0.00774
+498,Troncal v1000,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vallenar,Atacama,-29.20581,-71.01450,1000,0.00,True,106,7.17,0.16085,0.01088
+499,Troncal v1074,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Copiapó,Atacama,-27.83700,-70.51354,1074,0.00,True,106,4.03,0.16085,0.00611
+500,Troncal v1110,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vallenar,Atacama,-28.20627,-70.66807,1110,0.00,True,106,5.36,0.16085,0.00814
+501,Troncal v1115,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vallenar,Atacama,-28.33678,-70.70524,1115,0.00,True,106,5.82,0.16085,0.00884
+502,Troncal v1121,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ovalle,Coquimbo,-30.83945,-71.59416,1121,0.00,True,106,5.64,0.16085,0.00856
+503,Troncal v1130,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cisnes,Aysén del General Carlos Ibáñez del Campo,-43.78524,-72.35952,1130,0.00,True,24,5.69,0.03642,0.00864
+504,Troncal v1182,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Palena,Los Lagos,-43.48819,-72.11754,1182,0.00,True,24,5.54,0.03642,0.00840
+505,Troncal v1183,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Palena,Los Lagos,-43.48836,-72.11738,1183,0.00,True,24,5.54,0.03642,0.00840
+506,Troncal v1239,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cisnes,Aysén del General Carlos Ibáñez del Campo,-43.97566,-72.40287,1239,0.00,True,24,5.58,0.03642,0.00846
+507,Troncal v1243,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Llaillay,Valparaíso,-32.83302,-70.97892,1243,0.00,True,106,19.43,0.16085,0.02949
+508,Troncal v1251,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Petorca,Valparaíso,-32.34930,-71.06810,1251,0.00,True,106,11.93,0.16085,0.01810
+509,Troncal v1273,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coihaique,Aysén del General Carlos Ibáñez del Campo,-45.32176,-72.04569,1273,0.00,True,24,10.16,0.03642,0.01541
+510,Troncal v1317,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Aisén,Aysén del General Carlos Ibáñez del Campo,-45.28495,-72.15374,1317,0.00,True,24,10.16,0.03642,0.01542
+511,Troncal v1348,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Aisén,Aysén del General Carlos Ibáñez del Campo,-45.25659,-72.24445,1348,0.00,True,24,10.07,0.03642,0.01527
+512,Troncal v1349,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coihaique,Aysén del General Carlos Ibáñez del Campo,-45.94689,-71.84837,1349,0.00,True,24,8.87,0.03642,0.01345
+513,Troncal v1425,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Lago Verde,Aysén del General Carlos Ibáñez del Campo,-44.74714,-72.21082,1425,0.00,True,24,7.85,0.03642,0.01191
+514,Troncal v1445,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),María Elena,Antofagasta,-22.69596,-69.60970,1445,0.00,True,23,12.89,0.03490,0.01956
+515,Troncal v1450,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Iquique,Tarapacá,-20.20494,-70.13125,1450,0.00,True,2,1.87,0.00303,0.00284
+516,Troncal v1456,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Curepto,Maule,-35.10598,-72.19179,1456,0.00,True,62,1.24,0.09408,0.00188
+517,Troncal v1525,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.74964,-70.44644,1525,0.00,True,23,14.03,0.03490,0.02128
+518,Troncal v1533,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.78893,-70.41324,1533,0.00,True,23,14.00,0.03490,0.02125
+519,Troncal v1563,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.77439,-70.31964,1563,0.00,True,23,14.02,0.03490,0.02128
+520,Troncal v1564,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.77554,-70.31647,1564,0.00,True,23,14.00,0.03490,0.02125
+521,Troncal v1565,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.45189,-70.42652,1565,0.00,True,23,12.81,0.03490,0.01944
+522,Troncal v1573,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mejillones,Antofagasta,-22.91237,-70.27299,1573,0.00,True,1,1.00,0.00152,0.00152
+523,Troncal v1602,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Taltal,Antofagasta,-24.77133,-69.80924,1602,0.00,True,23,9.12,0.03490,0.01385
+524,Troncal v1607,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Taltal,Antofagasta,-25.11533,-69.87431,1607,0.00,True,23,7.89,0.03490,0.01197
+525,Troncal v1617,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coquimbo,Coquimbo,-30.19819,-71.38440,1617,0.00,True,106,8.99,0.16085,0.01365
+526,Troncal v1624,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Illapel,Coquimbo,-31.80231,-71.15630,1624,0.00,True,106,3.58,0.16085,0.00544
+527,Troncal v1694,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Malloa,Libertador General Bernardo O'Higgins,-34.40392,-70.90770,1694,0.00,True,20,8.46,0.03035,0.01283
+528,Troncal v1695,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Sagrada Familia,Maule,-35.03154,-71.29915,1695,0.00,True,2,1.15,0.00303,0.00174
+529,Troncal v1704,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Talca,Maule,-35.37082,-71.59285,1704,0.00,True,62,5.53,0.09408,0.00839
+530,Troncal v1710,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Linares,Maule,-35.79465,-71.58688,1710,0.00,True,62,3.01,0.09408,0.00457
+531,Troncal v1721,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Osorno,Los Lagos,-40.75985,-72.96338,1721,0.00,True,0,0.00,0.00000,0.00000
+532,Troncal v1723,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Paillaco,Los Ríos,-40.00642,-72.96583,1723,0.00,True,33,10.23,0.05008,0.01552
+533,Troncal v1756,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Valdivia,Los Ríos,-39.97933,-73.07961,1756,0.00,True,33,10.38,0.05008,0.01575
+534,Troncal v1768,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ñiquén,Ñuble,-36.34107,-71.84622,1768,0.00,True,62,2.38,0.09408,0.00361
+535,Troncal v1774,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coihueco,Ñuble,-36.61394,-71.89083,1774,0.00,True,68,1.65,0.10319,0.00251
+536,Troncal v1798,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Pinto,Ñuble,-36.91409,-71.48939,1798,0.00,True,1,0.91,0.00152,0.00138
+537,Troncal v1826,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Putre,Arica y Parinacota,-18.34174,-69.59559,1826,0.00,True,5,4.72,0.00759,0.00717
+538,Troncal v1854,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Antofagasta,Antofagasta,-23.69540,-70.42169,1854,0.00,True,23,14.06,0.03490,0.02133
+539,Troncal v1855,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Copiapó,Atacama,-27.36652,-70.33224,1855,0.00,True,7,4.22,0.01062,0.00640
+540,Troncal v1857,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Copiapó,Atacama,-27.40020,-70.29271,1857,0.00,True,7,4.22,0.01062,0.00640
+541,Troncal v1862,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coquimbo,Coquimbo,-29.95305,-71.33796,1862,0.00,True,106,10.29,0.16085,0.01561
+542,Troncal v1866,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Clemente,Maule,-35.53854,-71.48737,1866,0.00,True,62,2.73,0.09408,0.00414
+543,Troncal v1877,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Clemente,Maule,-35.55017,-71.35429,1877,0.00,True,62,1.43,0.09408,0.00217
+544,Troncal v1882,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Olmué,Valparaíso,-32.99738,-71.22015,1882,0.00,True,106,7.36,0.16085,0.01117
+545,Troncal v1898,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Estrella,Libertador General Bernardo O'Higgins,-34.24915,-71.62519,1898,0.00,True,9,2.93,0.01366,0.00444
+546,Troncal v1912,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Fernando,Libertador General Bernardo O'Higgins,-34.58339,-70.98988,1912,0.00,True,62,1.82,0.09408,0.00276
+547,Troncal v1916,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chimbarongo,Libertador General Bernardo O'Higgins,-34.70888,-71.04046,1916,0.00,True,1,0.86,0.00152,0.00131
+548,Troncal v1943,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Tomé,Biobío,-36.62286,-72.94459,1943,0.00,True,62,0.89,0.09408,0.00134
+549,Troncal v1954,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Putre,Arica y Parinacota,-18.25746,-69.17138,1954,0.00,True,0,0.00,0.00000,0.00000
+550,Troncal v1991,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Galvarino,La Araucanía,-38.41611,-72.78220,1991,0.00,True,1,0.89,0.00152,0.00135
+551,Troncal v1993,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Perquenco,La Araucanía,-38.46323,-72.38426,1993,0.00,True,68,4.36,0.10319,0.00662
+552,Troncal v2011,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Paillaco,Los Ríos,-40.07632,-72.87774,2011,0.00,True,33,10.18,0.05008,0.01544
+553,Troncal v2043,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Río Ibáñez,Aysén del General Carlos Ibáñez del Campo,-46.28183,-71.94767,2043,0.00,True,24,6.85,0.03642,0.01040
+554,Troncal v2058,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Natales,Magallanes y de la Antártica Chilena,-51.71635,-72.49744,2058,0.00,True,14,10.58,0.02124,0.01605
+555,Troncal v2061,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Natales,Magallanes y de la Antártica Chilena,-51.72035,-72.50689,2061,0.00,True,14,10.58,0.02124,0.01605
+556,Troncal v2067,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chillán,Ñuble,-36.60985,-72.16048,2067,0.00,True,68,4.36,0.10319,0.00662
+557,Troncal v2072,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),El Carmen,Ñuble,-36.90095,-72.08688,2072,0.00,True,68,3.40,0.10319,0.00515
+558,Troncal v2122,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Curanilahue,Biobío,-37.47646,-73.34627,2122,0.00,True,10,3.00,0.01517,0.00455
+559,Troncal v2124,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Quilleco,Biobío,-37.41680,-72.01860,2124,0.00,True,68,2.21,0.10319,0.00335
+560,Troncal v2125,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Quilleco,Biobío,-37.41315,-72.01725,2125,0.00,True,68,2.23,0.10319,0.00339
+561,Troncal v2130,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San José de Maipo,Metropolitana de Santiago,-33.58759,-70.38900,2130,0.00,True,4,2.54,0.00607,0.00385
+562,Troncal v2160,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Bernardo,Metropolitana de Santiago,-33.62722,-70.71379,2160,0.00,True,19,8.83,0.02883,0.01340
+563,Troncal v2171,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mostazal,Libertador General Bernardo O'Higgins,-33.96733,-70.70836,2171,0.00,True,19,10.87,0.02883,0.01650
+564,Troncal v2174,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mostazal,Libertador General Bernardo O'Higgins,-33.97820,-70.70409,2174,0.00,True,19,10.91,0.02883,0.01655
+565,Troncal v2175,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Retiro,Maule,-36.05159,-71.76956,2175,0.00,True,62,4.54,0.09408,0.00689
+566,Troncal v2180,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Retiro,Maule,-36.08308,-71.78754,2180,0.00,True,62,4.49,0.09408,0.00681
+567,Troncal v2184,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villarrica,La Araucanía,-39.26801,-72.37703,2184,0.00,True,33,6.26,0.05008,0.00949
+568,Troncal v2203,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Valdivia,Los Ríos,-39.81420,-73.24592,2203,0.00,True,33,11.39,0.05008,0.01728
+569,Troncal v2206,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Valdivia,Los Ríos,-39.80998,-73.25740,2206,0.00,True,33,11.12,0.05008,0.01687
+570,Troncal v2240,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Paillaco,Los Ríos,-40.07327,-72.88057,2240,0.00,True,33,10.18,0.05008,0.01544
+571,Troncal v2250,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Curaco de Vélez,Los Lagos,-42.43940,-73.60198,2250,0.00,True,1,0.99,0.00152,0.00150
+572,Troncal v2262,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Quilpué,Valparaíso,-33.04570,-71.44500,2262,0.00,True,106,6.04,0.16085,0.00916
+573,Troncal v2265,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cabrero,Biobío,-37.03581,-72.40268,2265,0.00,True,68,4.48,0.10319,0.00680
+574,Troncal v2296,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mulchén,Biobío,-37.72228,-72.26360,2296,0.00,True,68,3.34,0.10319,0.00507
+575,Troncal v2521,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vicuña,Coquimbo,-30.02771,-70.81425,2521,0.00,True,106,10.52,0.16085,0.01596
+576,Troncal v2805,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ercilla,La Araucanía,-38.06092,-72.37546,2805,0.00,True,68,3.28,0.10319,0.00497
+577,Troncal v2809,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Victoria,La Araucanía,-38.23396,-72.33153,2809,0.00,True,68,4.06,0.10319,0.00616
+578,Troncal v2810,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coihaique,Aysén del General Carlos Ibáñez del Campo,-45.57118,-72.06849,2810,0.00,True,24,9.79,0.03642,0.01485
+579,Troncal v2878,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Concepción,Biobío,-36.83544,-73.05573,2878,0.00,True,68,4.65,0.10319,0.00705
+580,Troncal v2879,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Vicente,Libertador General Bernardo O'Higgins,-34.43925,-71.07680,2879,0.00,True,20,9.82,0.03035,0.01490
+581,Troncal v2921,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cabrero,Biobío,-37.04144,-72.37109,2921,0.00,True,68,4.44,0.10319,0.00674
+582,Troncal v2943,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Lampa,Metropolitana de Santiago,-33.27359,-70.74180,2943,0.00,True,106,19.29,0.16085,0.02926
+583,Troncal v2988,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Peumo,Libertador General Bernardo O'Higgins,-34.35457,-71.21619,2988,0.00,True,20,9.59,0.03035,0.01455
+584,Troncal v3011,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Unión,Los Ríos,-40.25249,-72.95125,3011,0.00,True,33,8.97,0.05008,0.01361
+585,Troncal v3029,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Unión,Los Ríos,-40.32052,-72.98617,3029,0.00,True,33,8.83,0.05008,0.01339
+586,Troncal v3030,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Río Bueno,Los Ríos,-40.34897,-72.99717,3030,0.00,True,33,8.77,0.05008,0.01330
+587,Troncal v3157,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coihaique,Aysén del General Carlos Ibáñez del Campo,-45.70108,-72.06134,3157,0.00,True,24,9.53,0.03642,0.01446
+588,Troncal v3291,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Doñihue,Libertador General Bernardo O'Higgins,-34.22859,-70.95691,3291,0.00,True,20,7.81,0.03035,0.01185
+589,Troncal v3416,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Ligua,Valparaíso,-32.45225,-71.25611,3416,0.00,True,106,17.76,0.16085,0.02696
+590,Troncal v3686,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Las Cabras,Libertador General Bernardo O'Higgins,-34.27195,-71.36229,3686,0.00,True,20,8.18,0.03035,0.01242
+591,Troncal v3696,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Peumo,Libertador General Bernardo O'Higgins,-34.40930,-71.13914,3696,0.00,True,20,10.25,0.03035,0.01556
+592,Troncal v3704,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Nancagua,Libertador General Bernardo O'Higgins,-34.65393,-71.20425,3704,0.00,True,62,3.33,0.09408,0.00506
+593,Troncal v3836,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Pelluhue,Maule,-35.79367,-72.54036,3836,0.00,True,62,1.14,0.09408,0.00173
+594,Troncal v3842,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Temuco,La Araucanía,-38.74001,-72.59013,3842,0.00,True,8,4.98,0.01214,0.00756
+595,Troncal v3850,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Lanco,Los Ríos,-39.45227,-72.77552,3850,0.00,True,33,8.13,0.05008,0.01233
+596,Troncal v3890,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Nueva Imperial,La Araucanía,-38.74530,-72.95200,3890,0.00,True,8,2.83,0.01214,0.00430
+597,Troncal v3910,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Codegua,Libertador General Bernardo O'Higgins,-34.03327,-70.66865,3910,0.00,True,19,10.39,0.02883,0.01577
+598,Troncal v3915,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Talca,Maule,-35.37153,-71.59332,3915,0.00,True,62,5.55,0.09408,0.00842
+599,Troncal v3929,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Villarrica,La Araucanía,-39.27810,-72.22747,3929,0.00,True,33,6.31,0.05008,0.00958
+600,Troncal v4077,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Pucón,La Araucanía,-39.29463,-71.89030,4077,0.00,True,33,4.19,0.05008,0.00636
+601,Troncal v4167,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Linares,Maule,-35.83980,-71.63033,4167,0.00,True,62,4.92,0.09408,0.00746
+602,Troncal v4197,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Arauco,Biobío,-37.25090,-73.23551,4197,0.00,True,10,1.31,0.01517,0.00199
+603,Troncal v4677,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mariquina,Los Ríos,-39.55658,-72.93183,4677,0.00,True,33,9.97,0.05008,0.01513
+604,Troncal v4680,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mariquina,Los Ríos,-39.54754,-72.96490,4680,0.00,True,33,9.87,0.05008,0.01498
+605,Troncal v4726,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Maullín,Los Lagos,-41.59097,-73.23711,4726,0.00,True,23,8.34,0.03490,0.01266
+606,Troncal v4781,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chonchi,Los Lagos,-42.61051,-73.80241,4781,0.00,True,15,9.68,0.02276,0.01468
+607,Troncal v5102,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Combarbalá,Coquimbo,-31.15069,-71.03015,5102,0.00,True,106,5.45,0.16085,0.00827
+608,Troncal v5263,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coquimbo,Coquimbo,-30.19764,-71.42189,5263,0.00,True,106,8.65,0.16085,0.01313
+609,Troncal v5338,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Machalí,Libertador General Bernardo O'Higgins,-34.19361,-70.64862,5338,0.00,True,19,5.72,0.02883,0.00868
+610,Troncal v5384,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Catemu,Valparaíso,-32.80805,-70.95548,5384,0.00,True,106,18.93,0.16085,0.02872
+611,Troncal v5657,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Coihaique,Aysén del General Carlos Ibáñez del Campo,-45.83967,-71.87125,5657,0.00,True,24,9.14,0.03642,0.01387
+612,Troncal v5859,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),María Elena,Antofagasta,-22.61216,-69.62204,5859,0.00,True,23,12.89,0.03490,0.01956
+613,Troncal v6239,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Bulnes,Ñuble,-36.74897,-72.28581,6239,0.00,True,68,3.44,0.10319,0.00522
+614,Troncal v6322,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Diego de Almagro,Atacama,-26.39121,-70.04591,6322,0.00,True,7,4.25,0.01062,0.00644
+615,Troncal v6331,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Serena,Coquimbo,-29.90269,-71.25197,6331,0.00,True,106,11.06,0.16085,0.01679
+616,Troncal v6667,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Illapel,Coquimbo,-31.63274,-71.16834,6667,0.00,True,106,2.81,0.16085,0.00427
+617,Troncal v6699,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cabildo,Valparaíso,-32.42636,-71.06651,6699,0.00,True,106,14.57,0.16085,0.02211
+618,Troncal v6731,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Ligua,Valparaíso,-32.44952,-71.23164,6731,0.00,True,106,17.41,0.16085,0.02641
+619,Troncal v6748,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Felipe,Valparaíso,-32.75066,-70.72514,6748,0.00,True,106,16.51,0.16085,0.02505
+620,Troncal v6781,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Constitución,Maule,-35.33182,-72.41189,6781,0.00,True,62,2.45,0.09408,0.00371
+621,Troncal v6785,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Parral,Maule,-36.14140,-71.82221,6785,0.00,True,62,4.13,0.09408,0.00627
+622,Troncal v6790,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cauquenes,Maule,-35.96715,-72.31542,6790,0.00,True,62,1.60,0.09408,0.00242
+623,Troncal v6908,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chillán,Ñuble,-36.60668,-72.10330,6908,0.00,True,68,4.32,0.10319,0.00656
+624,Troncal v7083,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Lautaro,La Araucanía,-38.53433,-72.43503,7083,0.00,True,68,3.47,0.10319,0.00526
+625,Troncal v7101,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Perquenco,La Araucanía,-38.42115,-72.37779,7101,0.00,True,68,4.47,0.10319,0.00678
+626,Troncal v7224,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Puerto Montt,Los Lagos,-41.47182,-72.93961,7224,0.00,True,23,11.02,0.03490,0.01673
+627,Troncal v7254,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Castro,Los Lagos,-42.42928,-73.76773,7254,0.00,True,15,10.23,0.02276,0.01553
+628,Troncal v7293,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Melipilla,Metropolitana de Santiago,-33.68551,-71.21456,7293,0.00,True,8,4.17,0.01214,0.00633
+629,Troncal v7765,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Teodoro Schmidt,La Araucanía,-39.12099,-73.18923,7765,0.00,True,2,1.67,0.00303,0.00254
+630,Troncal v8223,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Alamos,Biobío,-37.62108,-73.41559,8223,0.00,True,10,3.00,0.01517,0.00455
+631,Troncal v8340,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Isla de Pascua,Valparaíso,-27.15551,-109.43671,8340,0.00,True,1,0.99,0.00152,0.00150
+632,Troncal v8612,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Máfil,Los Ríos,-39.65566,-72.94403,8612,0.00,True,33,9.07,0.05008,0.01377
+633,Troncal v8819,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Ancud,Los Lagos,-42.14459,-73.71920,8819,0.00,True,15,9.84,0.02276,0.01493
+634,Troncal v8851,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Arica,Arica y Parinacota,-18.47817,-70.32191,8851,0.00,True,1,1.00,0.00152,0.00151
+635,Troncal v9297,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Santa Bárbara,Biobío,-37.67201,-71.99983,9297,0.00,True,68,2.33,0.10319,0.00354
+636,Troncal v9700,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Laja,Biobío,-37.27525,-72.71840,9700,0.00,True,68,2.64,0.10319,0.00401
+637,Troncal v9965,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),San Ignacio,Ñuble,-36.82008,-72.10367,9965,0.00,True,68,3.33,0.10319,0.00505
+638,Troncal v10923,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Monte Patria,Coquimbo,-30.76798,-70.94386,10923,0.00,True,106,3.51,0.16085,0.00532
+639,Troncal v11354,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),La Higuera,Coquimbo,-29.50149,-71.22771,11354,0.00,True,106,8.17,0.16085,0.01240
+640,Troncal v12380,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Chaitén,Los Lagos,-43.40998,-72.36791,12380,0.00,True,24,5.73,0.03642,0.00870
+641,Troncal v12417,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Codegua,Libertador General Bernardo O'Higgins,-34.03965,-70.70574,12417,0.00,True,19,10.74,0.02883,0.01629
+642,Troncal v13595,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Mostazal,Libertador General Bernardo O'Higgins,-34.00060,-70.70157,13595,0.00,True,19,10.91,0.02883,0.01655
+643,Troncal v13603,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Olivar,Libertador General Bernardo O'Higgins,-34.21037,-70.76819,13603,0.00,True,2,1.80,0.00303,0.00273
+644,Troncal v13818,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Santo Domingo,Valparaíso,-33.64518,-71.61104,13818,0.00,True,9,1.48,0.01366,0.00224
+645,Troncal v14161,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Aisén,Aysén del General Carlos Ibáñez del Campo,-45.40124,-72.68661,14161,0.00,True,24,8.50,0.03642,0.01290
+646,Troncal v14208,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Cholchol,La Araucanía,-38.60257,-72.84767,14208,0.00,True,8,3.40,0.01214,0.00516
+647,Troncal v14438,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Río Ibáñez,Aysén del General Carlos Ibáñez del Campo,-46.10952,-72.06166,14438,0.00,True,24,7.99,0.03642,0.01212
+648,Troncal v16308,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vicuña,Coquimbo,-30.04259,-70.72266,16308,0.00,True,106,10.54,0.16085,0.01600
+649,Troncal v16559,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Pichidegua,Libertador General Bernardo O'Higgins,-34.31187,-71.38425,16559,0.00,True,20,8.16,0.03035,0.01238
+650,Troncal v16629,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Río Hurtado,Coquimbo,-30.25885,-70.65476,16629,0.00,True,106,9.76,0.16085,0.01480
+651,Troncal v18090,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Putre,Arica y Parinacota,-18.26815,-69.56173,18090,0.00,True,5,4.60,0.00759,0.00698
+652,Troncal v18513,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vallenar,Atacama,-28.57504,-70.76165,18513,0.00,True,106,6.49,0.16085,0.00985
+653,Troncal v18515,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Vallenar,Atacama,-28.57269,-70.78728,18515,0.00,True,106,6.49,0.16085,0.00985
+654,Troncal v19283,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Santa Cruz,Libertador General Bernardo O'Higgins,-34.64033,-71.36606,19283,0.00,True,62,3.29,0.09408,0.00499
+655,Troncal v19604,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Yungay,Ñuble,-37.11940,-72.01883,19604,0.00,True,68,2.54,0.10319,0.00385
+656,Troncal v19789,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Paine,Metropolitana de Santiago,-33.82192,-70.75190,19789,0.00,True,19,10.31,0.02883,0.01565
+657,Troncal v20239,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Los Lagos,Los Ríos,-39.86343,-72.81300,20239,0.00,True,33,8.28,0.05008,0.01257
+658,Troncal v20635,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Porvenir,Magallanes y de la Antártica Chilena,-53.29563,-70.36877,20635,0.00,True,1,1.00,0.00152,0.00152
+659,Troncal v20650,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Buin,Metropolitana de Santiago,-33.73199,-70.74196,20650,0.00,True,19,9.67,0.02883,0.01467
+660,Troncal v20928,intercambia,nodo troncal,Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph),Putre,Arica y Parinacota,-18.34749,-69.55204,20928,0.00,True,5,4.70,0.00759,0.00713

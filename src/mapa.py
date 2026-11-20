@@ -51,15 +51,23 @@ const epi = L.marker([DATA.sismo.lat, DATA.sismo.lon]).bindPopup('<b>Epicentro</
 anillos.addTo(map);
 
 // 4) nodos clave
-const colores = {genera:'#1565c0', intercambia:'#6a1b9a', recibe:'#9e9e9e'};
-const nodos = L.layerGroup();
-DATA.nodos.forEach(n => L.circleMarker([n.lat, n.lon], {radius: n.rol==='recibe'?3:6, color:'#222', weight: n.conectado?1:2, dashArray: n.conectado?null:'2 2', fillColor: colores[n.rol], fillOpacity: n.conectado?0.9:0.25})
-  .bindPopup('<b>'+n.nombre+'</b><br>Rol: '+n.rol+' ('+n.tipo+')<br>'+(n.conectado?'unido a la red ('+n.dist_km.toFixed(1)+' km al vértice)':'<i>sin fibra detectada (aislado)</i>')).addTo(nodos));
-nodos.addTo(map);
+const colores = {genera:'#1565c0', intercambia:'#6a1b9a', recibe:'#9e9e9e', troncal:'#ef6c00'};
+const nodos = L.layerGroup(), troncales = L.layerGroup();
+DATA.nodos.forEach(n => {
+  const tr = n.tipo === 'nodo troncal';
+  L.circleMarker([n.lat, n.lon], {radius: n.rol==='recibe'?3:(tr?3.5:6), color:'#222', weight: n.conectado?1:2, dashArray: n.conectado?null:'2 2',
+                                  fillColor: tr?colores.troncal:colores[n.rol], fillOpacity: n.conectado?0.9:0.25})
+    .bindPopup('<b>'+n.nombre+'</b><br>Rol: '+n.rol+' ('+n.tipo+')'+(n.comuna?'<br>'+n.comuna:'')+'<br>'+
+               (n.conectado?'unido a la red ('+n.dist_km.toFixed(1)+' km al vértice)':'<i>sin fibra detectada (aislado)</i>')+
+               '<br>alcanza a '+n.alcanza_antes+' nodos clave antes del sismo y a '+n.alcanza_despues.toFixed(1)+' en promedio después')
+    .addTo(tr ? troncales : nodos);
+});
+nodos.addTo(map); troncales.addTo(map);
 
 L.control.layers({'OpenStreetMap': osm}, {
   'Probabilidad de falla por enlace': danio, 'Fibra en operación (gris)': operacion,
-  'Anillos de intensidad (PGA del modelo)': anillos, 'Nodos clave': nodos}, {collapsed:false}).addTo(map);
+  'Anillos de intensidad (PGA del modelo)': anillos, 'Nodos clave (centros de datos, IXP, amarres, comunas)': nodos,
+  'Nodos troncales (bifurcaciones de la fibra)': troncales}, {collapsed:false}).addTo(map);
 
 // leyenda + ATTR
 const info = L.control({position:'bottomleft'});
@@ -73,7 +81,7 @@ info.onAdd = function(){
     '<h4 style="margin-top:8px">Probabilidad de falla del enlace</h4>'+
     [['< 2 %','#1a9850'],['2–5 %','#91cf60'],['5–10 %','#fee08b'],['10–20 %','#fc8d59'],['20–40 %','#d73027'],['≥ 40 %','#7f0000']].map(x=>'<span class="sw" style="background:'+x[1]+'"></span>'+x[0]).join('<br>')+
     '<div style="margin-top:4px;color:#555">Todos los enlaces son fibra detectada: no hay enlaces sintéticos.</div>'+
-    '<h4 style="margin-top:8px">Nodos clave</h4><span class="dot" style="background:#1565c0"></span>generan (centros de datos)<br><span class="dot" style="background:#6a1b9a"></span>intercambian (IXP, amarres de cables)<br><span class="dot" style="background:#9e9e9e"></span>reciben (comunas); borde punteado = sin fibra';
+    '<h4 style="margin-top:8px">Nodos clave</h4><span class="dot" style="background:#1565c0"></span>generan (centros de datos)<br><span class="dot" style="background:#6a1b9a"></span>intercambian (IXP, amarres de cables)<br><span class="dot" style="background:#ef6c00"></span>intercambian (nodos troncales: bifurcaciones)<br><span class="dot" style="background:#9e9e9e"></span>reciben (comunas); borde punteado = sin fibra';
   L.DomEvent.disableClickPropagation(d); return d; };
 info.addTo(map);
 </script></body></html>
@@ -101,9 +109,12 @@ def construir_datos(con):
     for i, g, p, km, pga, pgv, d in filas:
         tramos.append({"type": "Feature", "geometry": json.loads(g),
                        "properties": {"id": i, "p": round(float(p), 5), "km": float(km), "pga": float(pga), "pgv": float(pgv), "d": float(d)}})
-    nodos = [{"nombre": n, "rol": r, "tipo": t, "lon": float(x), "lat": float(y), "conectado": bool(c), "dist_km": float(d or 0) / 1000}
-             for n, r, t, x, y, c, d in consultar(con, """SELECT n.nombre, n.rol, n.tipo, ST_X(n.geom), ST_Y(n.geom), r.conectado, r.dist_m
-                                                           FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id""")]
+    nodos = [{"nombre": n, "rol": r, "tipo": t, "comuna": com, "lon": float(x), "lat": float(y), "conectado": bool(c),
+              "dist_km": float(d or 0) / 1000, "alcanza_antes": int(sa), "alcanza_despues": round(float(sd), 1)}
+             for n, r, t, com, x, y, c, d, sa, sd in consultar(con, """
+                 SELECT n.nombre, n.rol, n.tipo, n.comuna, ST_X(n.geom), ST_Y(n.geom), r.conectado, r.dist_m,
+                        a.socios_antes, a.socios_despues
+                 FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id JOIN attr_nodo a ON a.nodo_id = n.id""")]
     anillos = []
     for pga, color in ((0.30, "#b71c1c"), (0.20, "#e65100"), (0.10, "#f9a825"), (0.05, "#558b2f")):
         anillos.append({"pga": pga, "radio_km": round(_radio_para_pga(pga, s["mag"], s["prof"], sitio)), "color": color})

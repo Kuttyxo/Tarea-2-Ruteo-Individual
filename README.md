@@ -47,10 +47,10 @@ Opciones:
 |---|---|
 | Fibra cargada | 1.915 polilíneas, 10.312,8 km |
 | Topología | 22.705 aristas, 22.673 vértices, 123 componentes conexas |
-| Nodos clave | 399 (29 generan, 25 intercambian, 345 reciben); 339 unidos a la red |
+| Nodos clave | 660 (29 generan; 286 intercambian: 6 IXP, 19 amarres y 261 nodos troncales; 345 reciben); 600 unidos a la red |
 | Cortes esperados por el sismo | 262,2 (P por enlace entre 0 y 0,436) |
-| ATTR en operación | 0,0381 |
-| ATTR después del sismo | 0,0057 (−0,0324; −85,0 %), IC 95 % ± 0,00003, 5.000 escenarios, semilla 2010 |
+| ATTR en operación | 0,0567 |
+| ATTR después del sismo | 0,0084 (−0,0483; −85,1 %), IC 95 % ± 0,00004, 5.000 escenarios, semilla 2010 |
 
 ## `main.sql` en una base vacía
 
@@ -96,9 +96,13 @@ El resto es biblioteca estándar de Python: `struct` para leer el shapefile, `ur
 ## Decisiones y supuestos (cada uno con su fuente)
 
 **Nodos clave (marco proveedor–consumidor del estudio, sección 5.1).** *Generan*: centros de datos (PeeringDB; quedan 29 tras unir los que están a menos de ~1,1 km).
-*Intercambian*: IXP (PeeringDB, 6 ciudades) y estaciones de amarre de cables submarinos (submarinecablemap.com, 19). *Reciben*: las 345 comunas (DPA 2023;
-el estudio de 2018 usa 346). **[Supuesto]** La clasificación en esos tres roles es nuestra. Una comuna se une a la red si hay fibra dentro de su territorio
-(criterio del estudio). Los demás nodos se unen si hay un vértice de fibra a 20 km o menos **[Supuesto]**. Los nodos sin fibra cuentan como aislados.
+*Intercambian*: IXP (PeeringDB, 6 ciudades), estaciones de amarre de cables submarinos (submarinecablemap.com, 19) y **nodos troncales** (261).
+Un nodo troncal es un vértice donde se juntan 3 o más tramos de fibra (grado `cnt` ≥ 3 según `pgr_analyzeGraph`): una bifurcación de la red de transporte, donde
+se junta o se reparte el tráfico de varias rutas. El Estudio llama troncales a los enlaces que interconectan los equipos de los proveedores (pág. 8) y habla de una
+columna vertebral de fibra que conecta las ciudades (pág. 9). *Reciben*: las 345 comunas (DPA 2023; el estudio de 2018 usa 346). **[Supuesto]** La
+clasificación en esos tres roles y el criterio de los nodos troncales son nuestros. Una comuna se une a la red si hay fibra dentro de su territorio (criterio del
+estudio). Un nodo troncal ya está en la red. Los demás nodos se unen si hay un vértice de fibra a 20 km o menos **[Supuesto]**. Los nodos sin fibra cuentan
+como aislados. La lista completa, con rol, fuente, ubicación y vértice de la topología, se escribe en `salida/nodos_clave.csv`.
 
 **Topología.** Cada tramo entre vértices consecutivos es una arista, como en la sección 6.1 del estudio. Primero, `pgr_nodeNetwork` parte las líneas en sus
 intersecciones. Después, `pgr_createTopology` (tolerancia 0,0001° ≈ 11 m) asigna `source` y `target`. Resultado: 22.705 aristas, 22.673 vértices y 123 componentes
@@ -111,7 +115,7 @@ proponer una red nueva (sección 6). **No se agregó ningún enlace sintético**
 **ATTR.** Average Two-Terminal Reliability: fracción esperada de pares de nodos clave que pueden comunicarse. Es la definición del paper base del curso: Boettcher, Prieto, Restrepo y Pezoa (2018), IEEE Latin America Transactions 16(9), ec. 8 y 9, «fiabilidad promedio de dos terminales»: ATTR(k) = C(n,2)⁻¹ Σ Z_ij, promediado sobre los escenarios de falla. En operación, cada par está conectado o no. Después del sismo, cada arista falla de forma independiente con su probabilidad `p_falla`. El valor
 es el promedio de 5.000 escenarios (Monte Carlo, semilla fija).
 
-El paper suma sobre todos sus escenarios porque tiene pocos. Aquí hay 2^22.585 escenarios, y el cálculo exacto de la fiabilidad de una red es #P-completo (Provan y Ball, 1983). Con 5.000 escenarios, el IC 95 % del ATTR es ±0,00003 (0,6 %). La tabla `attr_nodo` guarda, para cada nodo clave, la fracción de los otros nodos clave que alcanza antes y después del sismo; su promedio es el ATTR.
+El paper suma sobre todos sus escenarios porque tiene pocos. Aquí hay 2^22.585 escenarios, y el cálculo exacto de la fiabilidad de una red es #P-completo (Provan y Ball, 1983). Con 5.000 escenarios, el IC 95 % del ATTR es ±0,00004 (0,4 %). La tabla `attr_nodo` guarda, para cada nodo clave, la fracción de los otros nodos clave que alcanza antes y después del sismo; su promedio es el ATTR.
 
 **Modelo de falla (desde el epicentro del GeoJSON del USGS), en `sql/05_probabilidades.sql`.**
 1. Cada arista se divide en sub-tramos de 2 km como máximo. La distancia al epicentro del punto medio de cada sub-tramo se calcula con `ST_Distance` sobre `geography` (geodésica en el elipsoide WGS84, en metros).
@@ -136,7 +140,7 @@ requirements.txt     psycopg2-binary, numpy, scipy
 sql/                 01_esquema_infra, 02_nodos_clave, 03_topologia, 04_sismo, 05_probabilidades, main.sql (volcado completo)
 src/                 db, shp, cargar_infra, descargar_nodos, nodos_clave, sismo, falla, attr, exportar, mapa
 data/                transparencia/ (fibra oficial), yafun/ (copia del Internet Archive, solo para comparar), nodos/ (comunas, PeeringDB, cables), usgs/ (sismo y ShakeMap)
-salida/              mapa.html, attr_operacion.json, attr_post_sismo.json
+salida/              mapa.html, attr_operacion.json, attr_post_sismo.json, nodos_clave.csv
 ```
 
 ## Fuentes

@@ -3,6 +3,8 @@
 Roles (marco proveedor-consumidor del estudio, seccion 5.1, tomado de Parandehgheibi et al.):
   - genera      : centros de datos (PeeringDB)                       -> donde se aloja/origina el contenido
   - intercambia : IXP (PeeringDB) y amarres de cables submarinos     -> donde el trafico se intercambia entre redes / con el mundo
+                  y nodos troncales: bifurcaciones de la fibra (vertices donde se juntan 3 o mas tramos; cnt >= 3 de
+                  pgr_analyzeGraph), donde el trafico de varias rutas de la red de transporte se junta o se reparte
   - recibe      : comunas (DPA 2023)                                 -> usuarios; el estudio usa las comunas como nodos de usuarios
 
 Regla de union a la red:
@@ -22,6 +24,7 @@ from .descargar_nodos import DIR_NODOS, descargar_nodos
 
 UMBRAL_M = 20_000          # [Supuesto] distancia maxima para unir centros de datos, IXP y amarres a la red (la fibra detectada es solo de caminos; ver sensibilidad)
 RADIO_DEDUP_GRADOS = 0.01  # ~1,1 km: centros de datos mas cerca que esto se cuentan como uno solo
+GRADO_TRONCAL = 3          # un vertice es nodo troncal si se juntan en el 3 o mas tramos de fibra (bifurcacion)
 
 
 def _norm(s):
@@ -117,6 +120,13 @@ def cargar_nodos_clave(con):
     avisos.append(f"centros de datos en PeeringDB (CL) usados: {total_fac}")
 
     with con.cursor() as cur:  # comuna donde cae cada nodo que aun no la tiene
+        cur.execute("""UPDATE nodos_clave n SET cut_com = c.cut_com FROM comunas c
+                       WHERE n.cut_com IS NULL AND ST_Intersects(c.geom, n.geom)""")
+        # nodos troncales: bifurcaciones de la topologia (requiere 03_topologia.sql). Ya estan sobre la red (distancia 0).
+        cur.execute("""INSERT INTO nodos_clave (nombre, rol, tipo, fuente, geom)
+                       SELECT 'Troncal v' || v.id, 'intercambia', 'nodo troncal',
+                              'Topologia: bifurcacion de la fibra (cnt >= 3 en pgr_analyzeGraph)', v.the_geom
+                       FROM fibra_red_vertices_pgr v WHERE v.cnt >= %s ORDER BY v.id""", (GRADO_TRONCAL,))
         cur.execute("""UPDATE nodos_clave n SET cut_com = c.cut_com FROM comunas c
                        WHERE n.cut_com IS NULL AND ST_Intersects(c.geom, n.geom)""")
         # amarres en la costa que caen en el mar: la comuna mas cercana (solo para informar la ubicacion)

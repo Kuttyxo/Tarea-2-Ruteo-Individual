@@ -18,7 +18,7 @@ CREATE TABLE nodos_clave (
     id      serial PRIMARY KEY,
     nombre  text NOT NULL,
     rol     text NOT NULL CHECK (rol IN ('genera', 'intercambia', 'recibe')),
-    tipo    text NOT NULL,          -- centro de datos | IXP | amarre de cable submarino | comuna
+    tipo    text NOT NULL,          -- centro de datos | IXP | amarre de cable submarino | nodo troncal | comuna
     fuente  text NOT NULL,
     cut_com text,                   -- comuna donde esta el nodo (la que lo contiene o, si cae en el mar, la mas cercana)
     comuna  text,

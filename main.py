@@ -93,7 +93,7 @@ def paso_cargar(con, fuente=FUENTE_POR_DEFECTO):
                                        (SELECT count(DISTINCT component) FROM pgr_connectedComponents(
                                          'SELECT id, source, target, largo_m AS cost, largo_m AS reverse_cost FROM fibra_red WHERE NOT bucle'))""")[0]
     print(f"   aristas: {a:,}   vertices: {v:,}   componentes conexas: {c}")
-    print("== 3. Nodos clave (generan: centros de datos | intercambian: IXP y amarres de cables | reciben: comunas)")
+    print("== 3. Nodos clave (generan: centros de datos | intercambian: IXP, amarres de cables y nodos troncales | reciben: comunas)")
     resumen, avisos = cargar_nodos_clave(con)
     for r in resumen:
         print("   ", r)
@@ -136,6 +136,7 @@ def paso_attr(con, muestras, motor="scipy"):
     guardar_por_nodo(con, antes, despues)
     antes.pop("por_nodo"), despues.pop("por_nodo")
     os.makedirs(SALIDA_DIR, exist_ok=True)
+    escribir_tabla_nodos(con, os.path.join(SALIDA_DIR, "nodos_clave.csv"))
     for nombre, d in (("attr_operacion.json", antes), ("attr_post_sismo.json", despues)):
         with open(os.path.join(SALIDA_DIR, nombre), "w", encoding="utf-8", newline="\n") as f:
             json.dump(d, f, ensure_ascii=False, indent=2)
@@ -149,6 +150,23 @@ def paso_attr(con, muestras, motor="scipy"):
           f"IC 95 % del ATTR despues: +/- {despues['ATTR_total_ic95']:.5f}")
     _imprimir_nodos(con)
     return antes, despues
+
+
+def escribir_tabla_nodos(con, ruta):
+    """salida/nodos_clave.csv: cada nodo clave con su rol, tipo, fuente, ubicacion, vertice de la topologia y conectividad."""
+    import csv
+    filas = consultar(con, """SELECT n.id, n.nombre, n.rol, n.tipo, n.fuente, n.comuna, n.region,
+                                     round(ST_Y(n.geom)::numeric, 5), round(ST_X(n.geom)::numeric, 5),
+                                     r.vertice_id, round((r.dist_m / 1000)::numeric, 2), r.conectado,
+                                     a.socios_antes, round(a.socios_despues::numeric, 2),
+                                     round(a.r_antes::numeric, 5), round(a.r_despues::numeric, 5)
+                              FROM nodos_clave n JOIN nodo_red r ON r.nodo_id = n.id JOIN attr_nodo a ON a.nodo_id = n.id
+                              ORDER BY n.id""")
+    with open(ruta, "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "nombre", "rol", "tipo", "fuente", "comuna", "region", "lat", "lon", "vertice_topologia",
+                    "dist_al_vertice_km", "unido_a_la_red", "alcanza_antes", "alcanza_despues_media", "R_antes", "R_despues"])
+        w.writerows(filas)
 
 
 def _imprimir_nodos(con):
