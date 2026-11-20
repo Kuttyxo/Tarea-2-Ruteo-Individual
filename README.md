@@ -123,13 +123,13 @@ El paper suma sobre todos sus escenarios porque tiene pocos. Aquí hay 2^22.585 
 2. Distancia hipocentral: `R = √(d_epicentro² + H²)`, con H = 22,9 km.
 3. Youngs, Chiou, Silva y Humphrey (1997), *Seismological Research Letters* 68(1):58-73, tabla 2 (zona de subducción, interfaz): PGA y Sa(1 s) medianos, suelo tipo *soil*.
 4. PGV = 94,6 cm/s × Sa(1 s) en g (Newmark y Hall, 1982; implementación de USGS ShakeLib).
-5. Tasa de reparaciones por km de infraestructura lineal: `RR = K · 0,00187 · PGV` (ALA 2001 / HAZUS; PGV en in/s y RR por cada 1.000 pies), es decir `0,002415 · K · PGV[cm/s]` por km.
+5. Tasa de reparaciones por km de infraestructura lineal: `RR = K · 0,00187 · PGV` (ALA / Eidinger 2001, mediana del daño por paso de las ondas; PGV en in/s y RR por cada 1.000 pies), es decir `0,002415 · K · PGV[cm/s]` por km.
 6. Probabilidad de falla de una arista: `P = 1 − exp(−Σ RR·largo)` (Poisson). Queda siempre en [0, 1), y la columna tiene un `CHECK` que lo exige.
 
 **[Supuestos]** Punto-fuente en el epicentro: el USGS muestra una ruptura de ~500 km, por lo que el modelo subestima el movimiento a 200-450 km hacia el norte y lo sobreestima
 a más de 450 km. Suelo *soil*, porque la fibra va por valles y caminos. La tasa de reparaciones de tuberías enterradas se usa como aproximación de un cable (K = 1, el valor de referencia de ALA),
 sin variabilidad aleatoria. Contra el ShakeMap oficial del USGS, el modelo tiene correlación de logaritmos 0,90 (PGA y PGV) en 16.729 puntos de la red.
-K y el tipo de suelo cambian mucho el ATTR después del sismo (ver la tabla de sensibilidad en la bitácora), pero no la conclusión: el ATTR cae en todas las variantes.
+K y el tipo de suelo cambian el ATTR después del sismo entre 0,0079 y 0,0211 (sensibilidad en la bitácora), pero no la conclusión: el ATTR cae más de 60 % en todas las variantes.
 
 ## Estructura
 
@@ -152,7 +152,7 @@ salida/              mapa.html, attr_operacion.json, attr_post_sismo.json, nodos
 - USGS, M 8.8 Maule 2010 (`official20100227063411530_30`): https://earthquake.usgs.gov/earthquakes/eventpage/official20100227063411530_30
 - Youngs et al. (1997), SRL 68(1):58-73. Coeficientes verificados contra `openquake.hazardlib.gsim.youngs_1997`.
 - Newmark y Hall (1982) vía USGS ShakeLib: https://usgs.github.io/shakelib/shakelib.conversions.imt.newmark_hall_1982.html
-- ALA (2001), *Seismic Fragility Formulations for Water Systems* (fórmula de RR citada en Mazumder et al., J. Pipeline Syst. Eng.).
+- J. Eidinger (2001), *Seismic Fragility Formulations for Water Systems*, American Lifelines Alliance (ALA). La fórmula y sus unidades están reproducidas en K. A. Porter (2016), *Damage and Restoration of Water Supply Systems in an Earthquake Sequence*, SESM 16-02, University of Colorado, ec. 3.
 - PostGIS, `ST_Distance` sobre `geography` (distancia en metros sobre el elipsoide): https://postgis.net/docs/ST_Distance.html
 - J. S. Provan y M. O. Ball (1983), «The complexity of counting cuts and of computing the probability that a graph is connected», SIAM J. Comput. 12(4):777-788, doi 10.1137/0212053.
 - PeeringDB (https://www.peeringdb.com), submarinecablemap.com, SENAPRED/ArcGIS Online (DPA 2023).

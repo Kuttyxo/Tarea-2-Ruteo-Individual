@@ -16,7 +16,8 @@ Cadena de calculo (cada eslabon tiene su fuente; ver README.md y la bitacora):
     para la aceleracion peak (PGA) y para la aceleracion espectral a 1 s, Sa(1.0).
  3. Velocidad peak:  PGV[cm/s] = (386.09 / (2*pi*1.65)) * 2.54 * Sa(1.0)[g] = 94,6 * Sa(1.0)   (Newmark y Hall, 1982, como lo
     implementa USGS ShakeLib, shakelib.conversions.imt.newmark_hall_1982).
- 4. Tasa de reparaciones por km (infraestructura lineal, ALA 2001 / HAZUS):  RR = K * 0,00187 * PGV[in/s] por cada 1.000 pies
+ 4. Tasa de reparaciones por km (infraestructura lineal enterrada, ALA / Eidinger 2001, mediana; reproducida en Porter 2016, ec. 3):
+    RR = K * 0,00187 * PGV[in/s] por cada 1.000 pies
     -> en unidades SI: RR[1/km] = K * 0,00187 * (1000/304,8) / 2,54 * PGV[cm/s] = 0,002415 * K * PGV[cm/s]
  5. Probabilidad de falla del tramo (proceso de Poisson de cortes a lo largo del cable):
         P = 1 - exp( - sum_k RR_k * l_k )          (k: sub-tramos de a lo mas 2 km; l_k en km)
