@@ -37,7 +37,7 @@ Opciones:
 - `--no-abrir`: no abre el navegador.
 - `--fuente internet_archive`: usa la capa antigua, solo para comparar.
 - `--desde-main-sql`: carga la base desde `sql/main.sql` en vez de construirla desde los datos.
-- `--motor pgrouting`: calcula las componentes de cada escenario con `pgr_connectedComponents` dentro de la base. Da el mismo resultado que SciPy y tarda unos 9 minutos en vez de 30 segundos.
+- `--motor pgrouting`: calcula las componentes de cada escenario con `pgr_connectedComponents` dentro de la base. Da el mismo resultado que SciPy y tarda unos 6 minutos en vez de 30 segundos.
 
 `python main.py verificar` resuelve la red en operación y los primeros 20 escenarios del sismo con SciPy y con `pgr_connectedComponents`, y comprueba que dan lo mismo.
 
@@ -87,7 +87,7 @@ docker exec tarea2_resiliencia_db psql -U tarea2 -d vacia -v ON_ERROR_STOP=1 -q 
 | pgRouting | 3.7.3 | `pgr_nodeNetwork` (corta las líneas en sus cruces), `pgr_createTopology` (crea `source`, `target` y la tabla de vértices), `pgr_analyzeGraph` (revisa la red) y `pgr_connectedComponents` (cuenta las componentes). Se usa la 3.7 porque `pgr_createTopology` queda obsoleta en la 3.8. |
 | psycopg2-binary | 2.9.13 | Conecta Python con PostgreSQL. |
 | numpy | 2.1.3 | Arreglos: sorteo de los escenarios Monte Carlo y la cadena del modelo en Python (comprobación del SQL y sensibilidades). |
-| SciPy | 1.15.3 | `scipy.sparse.csgraph.connected_components`: componentes conexas en cada uno de los 5.000 escenarios Monte Carlo (~5 ms por escenario, frente a ~100 ms de `pgr_connectedComponents`). `python main.py verificar` muestra que da lo mismo que pgRouting, y `--motor pgrouting` hace todo el Monte Carlo dentro de la base. |
+| SciPy | 1.15.3 | `scipy.sparse.csgraph.connected_components`: componentes conexas en cada uno de los 5.000 escenarios Monte Carlo (~5 ms por escenario, frente a ~60 ms de `pgr_connectedComponents`). `python main.py verificar` muestra que da lo mismo que pgRouting, y `--motor pgrouting` hace todo el Monte Carlo dentro de la base. |
 | Leaflet | 1.9.4 (CDN cdnjs) | Mapa web interactivo (`salida/mapa.html`). |
 | Docker / Docker Compose | 28.0 / 2.34 | Levanta la base con la imagen `pgrouting/pgrouting:16-3.5-3.7.3`. |
 

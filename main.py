@@ -216,7 +216,7 @@ def main():
     ap.add_argument("--desde-main-sql", action="store_true", help="cargar la base desde sql/main.sql en vez de construirla")
     ap.add_argument("--no-abrir", action="store_true")
     ap.add_argument("--motor", choices=["scipy", "pgrouting"], default="scipy",
-                    help="componentes conexas del Monte Carlo: SciPy (rapido) o pgr_connectedComponents en la base (~8 min)")
+                    help="componentes conexas del Monte Carlo: SciPy (rapido) o pgr_connectedComponents en la base (~6 min)")
     a = ap.parse_args()
     inicio = time.time()
     con = asegurar_bd()

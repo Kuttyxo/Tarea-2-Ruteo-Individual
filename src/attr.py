@@ -95,6 +95,7 @@ class MotorPgr:
                               'SELECT id, source, target, 1 AS cost, 1 AS reverse_cost FROM fibra_red e
                                WHERE NOT bucle AND NOT EXISTS (SELECT 1 FROM aristas_caidas c WHERE c.id = e.id)')""")
         filas = np.array(self.cur.fetchall(), dtype=np.int64).reshape(-1, 2)
+        self.cur.connection.commit()   # un TRUNCATE por transaccion: si se acumulan en una sola, cada escenario es mas lento
         etiqueta = np.arange(self.n_vertices) + self.n_vertices      # vertice sin aristas vivas: queda solo
         etiqueta[filas[:, 0]] = filas[:, 1]
         unicas, etiqueta = np.unique(etiqueta, return_inverse=True)
@@ -170,7 +171,9 @@ def calcular_attr(con, p_falla=None, n_muestras=2000, semilla=2010, umbral_m=Non
     if devolver_muestras:
         res["muestras_attr_total"] = [v / den["total"] for v in acum["total"]]
     if fn is not None:
-        con.rollback()                            # borra la tabla temporal de aristas caidas
+        with con.cursor() as cur:                 # borra la tabla temporal de aristas caidas
+            cur.execute("DROP TABLE IF EXISTS pg_temp.aristas_caidas")
+        con.commit()
     res["motor_componentes"] = motor
     # Por nodo: fiabilidad promedio del nodo R_i = E[otros nodos clave que alcanza] / (N - 1).
     # El promedio de R_i sobre los N nodos es exactamente el ATTR (cada par se cuenta dos veces).
